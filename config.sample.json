@@ -1,0 +1,43 @@
+{
+    "tasks": [
+        { "slug": "mail",      "name": "Mail",     "scheduled": true,  "external": true  },
+        { "slug": "contacts",  "name": "Contacts", "scheduled": true,  "external": true  },
+        { "slug": "calendar",  "name": "Calendar", "scheduled": true,  "external": true  },
+        { "slug": "spotify",   "name": "Spotify",  "scheduled": true,  "external": false },
+
+        { "slug": "filesystem", "name": "Filesystem", "scheduled": true,  "external": true, "post": true }
+    ],
+
+    "user": {
+        "name": "anon"
+    },
+
+    "passBin": "~/bin/pass",
+
+    "storage": {
+        "sync":    { "path": "~/sync/backup",    "chown": true,  "commit": true },
+        "local":   { "path": "~/backup/files",   "chown": true,  "commit": true },
+        "logs":    { "path": "~/backup/logs",    "chown": true,  "commit": false },
+        "helpers": { "path": "~/backup/helpers", "chown": false, "commit": false },
+        "store":   { "path": "~/.cache/store",   "chown": false, "commit": false }
+    },
+
+    "ping": {
+        "enabled": true,
+        "endpoint": "http://localhost:1337/%s"
+    },
+
+    "notify": {
+        "enabled": true
+    },
+
+    "mail": {
+        "enabled": true,
+        "type": "sendmail"
+    },
+
+    "filters": [
+        " Incrementing mirror file .+",
+        " Processing changed file .+"
+    ]
+}
