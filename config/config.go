@@ -3,10 +3,11 @@ package config
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/crdx/mission/jsonc"
-	"github.com/crdx/mission/task"
 	"os"
 	"strings"
+
+	"github.com/crdx/mission/jsonc"
+	"github.com/crdx/mission/task"
 )
 
 func (self PingConfig) GetEndpoint() (string, error) {

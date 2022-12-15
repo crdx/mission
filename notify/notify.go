@@ -2,9 +2,10 @@ package notify
 
 import (
 	"fmt"
-	"github.com/crdx/mission/util"
 	"os/exec"
 	"time"
+
+	"github.com/crdx/mission/util"
 )
 
 type NotificationIcon = string

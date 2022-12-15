@@ -2,10 +2,11 @@ package spotify
 
 import (
 	"fmt"
+	"path/filepath"
+
 	"github.com/crdx/mission/args"
 	"github.com/crdx/mission/logger"
 	"github.com/crdx/mission/util"
-	"path/filepath"
 
 	"github.com/zmb3/spotify"
 )

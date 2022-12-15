@@ -2,11 +2,12 @@ package logger
 
 import (
 	"fmt"
-	"github.com/crdx/mission/util"
 	"os"
 	"regexp"
 	"strings"
 	"time"
+
+	"github.com/crdx/mission/util"
 )
 
 type Problem struct {

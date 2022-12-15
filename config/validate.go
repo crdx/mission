@@ -2,10 +2,11 @@ package config
 
 import (
 	"fmt"
-	"github.com/crdx/mission/util"
 	"os"
 	"regexp"
 	"strings"
+
+	"github.com/crdx/mission/util"
 )
 
 func validate(config Config) error {

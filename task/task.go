@@ -2,8 +2,9 @@ package task
 
 import (
 	"fmt"
-	"github.com/crdx/mission/tasks/spotify"
 	"path"
+
+	"github.com/crdx/mission/tasks/spotify"
 
 	"github.com/crdx/col"
 )

@@ -4,9 +4,10 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/crdx/mission/logger"
 	"os"
 	"path"
+
+	"github.com/crdx/mission/logger"
 
 	"github.com/zmb3/spotify"
 )
