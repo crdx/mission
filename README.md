@@ -98,6 +98,7 @@ The most important section: the list of tasks. Each task should have the followi
 | scheduled | Whether this task should run if called without any specified tasks with `-t/--task`.<br><br>Tasks that are not scheduled can still be run manually. |
 | external | Whether this task is external or built in. |
 | post | Whether this task should run after all other tasks have run and after commit and chown operations are complete. |
+| entrypoint | (Optional) Path to script or binary entrypoint. Overrides the lookup done via `storage.tasks.path`, and only applies to external tasks. |
 
 ### user
 
@@ -131,7 +132,8 @@ Five types of storage directory are supported.
 | local | Backup files that are expected to remain on the local machine. |
 | logs  | Logfiles that need to be saved. The main run log will be saved as a dated file here. |
 | helpers | Helper scripts that need to be shared across tasks. |
-| store | Cached sessions. |
+| tasks | Directory where tasks can be found. Can be overridden on a per-task basis. |
+| store | (Optional) Cached sessions. |
 
 ### ping
 

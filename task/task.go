@@ -2,7 +2,6 @@ package task
 
 import (
 	"fmt"
-	"path"
 
 	"github.com/crdx/mission/tasks/spotify"
 
@@ -10,19 +9,12 @@ import (
 )
 
 type Task struct {
-	Slug      string `json:"slug"`
-	Name      string `json:"name"`
-	Scheduled bool   `json:"scheduled"` // Is this task run on a schedule?
-	External  bool   `json:"external"`  // Is this task an external script?
-	Post      bool   `json:"post"`      // Should this task run after commit & chown?
-}
-
-func (self Task) GetScriptPath() string {
-	if self.External {
-		return path.Join("tasks", self.Slug, "run")
-	} else {
-		return ""
-	}
+	Slug       string `json:"slug"`
+	Name       string `json:"name"`
+	Scheduled  bool   `json:"scheduled"`  // Is this task run on a schedule?
+	External   bool   `json:"external"`   // Is this task an external script?
+	Post       bool   `json:"post"`       // Should this task run after commit & chown?
+	EntryPoint string `json:"entrypoint"` // Path to task script (if external)
 }
 
 func (self Task) GetBuiltIn() Action {

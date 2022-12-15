@@ -18,6 +18,7 @@
         "sync":    { "path": "~/sync/backup",    "chown": true,  "commit": true },
         "local":   { "path": "~/backup/files",   "chown": true,  "commit": true },
         "logs":    { "path": "~/backup/logs",    "chown": true,  "commit": false },
+        "tasks":   { "path": "~/backup/tasks",   "chown": false, "commit": false },
         "helpers": { "path": "~/backup/helpers", "chown": false, "commit": false },
         "store":   { "path": "~/.cache/store",   "chown": false, "commit": false }
     },

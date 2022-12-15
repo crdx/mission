@@ -16,12 +16,11 @@ func validate(config Config) error {
 
 	for _, task := range config.Tasks {
 		if task.External {
-			entryPoint := task.GetScriptPath()
-			if !util.IsExecutable(entryPoint) {
-				return fmt.Errorf("entrypoint for tasks.%s (%s) does not exist or is not executable", task.Slug, entryPoint)
+			if !util.IsExecutable(task.EntryPoint) {
+				return fmt.Errorf("entrypoint for tasks.%s (%s) does not exist or is not executable", task.Slug, task.EntryPoint)
 			}
 
-			bytes, err := os.ReadFile(entryPoint)
+			bytes, err := os.ReadFile(task.EntryPoint)
 			if err != nil {
 				return fmt.Errorf("unable to read entrypoint for tasks.%s", task.Slug)
 			}
@@ -62,7 +61,7 @@ func validate(config Config) error {
 		return fmt.Errorf("PassBin (%s) is not an executable file", config.PassBin)
 	}
 
-	for _, key := range []string{"sync", "local", "logs", "helpers"} {
+	for _, key := range []string{"sync", "local", "logs", "helpers", "tasks"} {
 		dir := config.Storage[key]
 
 		if dir.Path == "" {

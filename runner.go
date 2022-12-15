@@ -122,7 +122,7 @@ func (self Runner) runOne(task task.Task) error {
 	self.logger.Header("Task: " + task.Name)
 
 	if task.External {
-		return self.runExternal(self.getArgs(), task.GetScriptPath())
+		return self.runExternal(self.getArgs(), task.EntryPoint)
 	} else {
 		return task.GetBuiltIn()(self.getArgs(), self.logger)
 	}
