@@ -4,7 +4,7 @@
 
 ## Features
 
-- Both built in (written in Go) tasks or external scripts/binaries.
+- Built in (written in Go) tasks or external scripts or binaries.
 - Scheduled tasks to run as part of a system cronjob, as well as manually.
 - Post-tasks to be run after commit and chown operations are complete. (Useful for when filesystem backups need to run after cloud backups.)
 - Multiple types of storage directory (sync, local, ...).
