@@ -3,13 +3,14 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/crdx/mission/config"
-	"github.com/crdx/mission/logger"
-	"github.com/crdx/mission/util"
 	"log"
 	"os"
 	"path"
 	"time"
+
+	"github.com/crdx/mission/config"
+	"github.com/crdx/mission/logger"
+	"github.com/crdx/mission/util"
 
 	"github.com/crdx/col"
 	"github.com/crdx/duckopt"
