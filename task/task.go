@@ -11,10 +11,10 @@ import (
 type Task struct {
 	Slug       string `json:"slug"`
 	Name       string `json:"name"`
-	Scheduled  bool   `json:"scheduled"`  // Is this task run on a schedule?
-	External   bool   `json:"external"`   // Is this task an external script?
-	Post       bool   `json:"post"`       // Should this task run after commit & chown?
-	EntryPoint string `json:"entrypoint"` // Path to task script (if external)
+	Scheduled  bool   `json:"scheduled"`
+	External   bool   `json:"external"`
+	Post       bool   `json:"post"`
+	EntryPoint string `json:"entrypoint"`
 }
 
 func (self Task) GetBuiltIn() Action {
