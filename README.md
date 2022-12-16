@@ -104,7 +104,7 @@ The most important section: the list of tasks. Each task should have the followi
 
 Should contain one field, `name`, with the username of the system's unprivileged user.
 
-This is used as the user to chown files as, to trigger notifications for, and to send emails to.
+This user is used as the file owner, and as the recipient of notifications and emails.
 
 ### passBin
 
