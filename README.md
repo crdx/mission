@@ -77,7 +77,7 @@ To avoid any surprises the configuration has to pass strict validation checks be
 
 ### dump
 
-Parse the configuration file and dump it as JSON after validation and transformations have taken place.
+Parse the configuration file and dump it as JSON after transformations and validation checks have taken place.
 
 ## Configuration
 
