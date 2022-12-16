@@ -32,6 +32,11 @@ linters:
     - varnamelen
     - wrapcheck
     - wsl
+    - deadcode
+    - structcheck
+    - nosnakecase
+    - varcheck
+    - ifshort
 
 linters-settings:
   revive:
