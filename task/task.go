@@ -30,7 +30,12 @@ func (self Task) GetShortString() string {
 }
 
 func (self Task) GetLongString() string {
-	return fmt.Sprintf("%s [%s, %s]", self.Slug, col.Bold(self.Name), self.GetDisplayEnabled())
+	return fmt.Sprintf(
+		"%s [%s, %s]",
+		self.Slug,
+		col.Bold(self.Name),
+		self.GetDisplayEnabled(),
+	)
 }
 
 func (self Task) GetDisplayEnabled() string {
