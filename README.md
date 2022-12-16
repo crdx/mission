@@ -6,9 +6,9 @@
 
 - Built in (written in Go) tasks or external scripts or binaries.
 - Scheduled tasks to run as part of a system cronjob, as well as manually.
-- Post-tasks to be run after commit and chown operations are complete. (Useful for when filesystem backups need to run after cloud backups.)
-- Multiple types of storage directory (sync, local, ...).
-- Handle chowning and committing files in storage directories.
+- Post-tasks to be run after other tasks. (Useful for when filesystem backups need to run after cloud backups.)
+- Multiple types of storage directory for backed up files (sync, local, ...).
+- Handle [chowning](#chown) and committing files in storage directories.
 - Helper scripts shared by all tasks.
 - Ping (via HTTP) a remote endpoint when a run completes without errors.
 - Send an email (via sendmail) with the log when a run completes.
@@ -97,7 +97,7 @@ The most important section: the list of tasks. Each task should have the followi
 | name | A user-friendly name for this task. |
 | scheduled | Whether this task should run if called without any specified tasks with `-t/--task`.<br><br>Tasks that are not scheduled can still be run manually. |
 | external | Whether this task is external or built in. |
-| post | Whether this task should run after all other tasks have run and after commit and chown operations are complete. |
+| post | Whether this task should run after all other tasks have run and after commit and [chown](#chown) operations are complete. |
 | entrypoint | (Optional) Path to script or binary entrypoint. Overrides the lookup done via `storage.tasks.path`, and only applies to external tasks. |
 
 ### user
@@ -121,7 +121,7 @@ A set of storage directories for tasks to use for backup data or logfiles. Each 
 | Field | Description |
 | ----- | ----------- |
 | path | The path to the directory.<br><br>A `~` prefix in the path will be transformed into the home directory of the user set in the `user.name` field.
-| chown | If `true` then after all the non-post tasks have run all files in this directory will be chowned to the user set in the `user.name` field.
+| chown | If `true` then after all the non-post tasks have run all files in this directory will be [chowned](#chown) to the user set in the `user.name` field.
 | commit | If `true` then after all the non-post tasks have run all files in this directory will be committed with git.
 
 Five types of storage directory are supported.
@@ -157,7 +157,15 @@ The run log without filtered items (see [filters](#filters)) will be included in
 
 A list of regexes to use to filter out log lines before including them in the email. Some tasks may produce a lot of output which should still be saved to disk but would be excessive to include in an email. It can also be used to filter out sensitive lines.
 
-## Types of task
+## Chown?
+
+It may not be obvious why chowning files would be the job of a task runner at all.
+
+If a backup task needs to run as root to access the resources it needs, it may also need to create files (containing the backed up data) which will by default be owned by root. If they should ultimately end up owned by the unprivileged user then there are two options: ensure the task creates the files with the right owner, or let the task create all the root-owned files it likes and let the runner handle the chowning job at a later stage in the pipeline.
+
+This workflow, though slightly unconventional, is entirely optional. It's flexible enough that you have the choice of running as root and letting specific tasks drop privileges, or running unprivileged and letting specific tasks request higher privileges.
+
+## Task types
 
 ### Built in
 
