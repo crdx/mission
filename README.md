@@ -85,7 +85,7 @@ The format of the configuration file is a more relaxed form of JSON ("jsonc") th
 
 If the path is not passed via `-c/--config` then it will be assumed to be `mission.json` in the working directory.
 
-See `config.sample.json` for a sample configuration file, or carry on reading for a more detailed description of each section.
+See `mission.sample.json` for a sample configuration file, or carry on reading for a more detailed description of each section.
 
 ### tasks
 
