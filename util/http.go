@@ -7,7 +7,7 @@ import (
 
 func HttpGet(endpoint string, params map[string]string) ([]byte, error) {
 	client := http.Client{}
-	request, err := http.NewRequest("GET", endpoint, nil)
+	request, err := http.NewRequest(http.MethodGet, endpoint, nil)
 
 	if err != nil {
 		return nil, err
@@ -25,5 +25,6 @@ func HttpGet(endpoint string, params map[string]string) ([]byte, error) {
 		return nil, err
 	}
 
+	defer response.Body.Close()
 	return io.ReadAll(response.Body)
 }
