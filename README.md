@@ -165,6 +165,8 @@ If a backup task needs to run as root to access the resources it needs, it may a
 
 This workflow, though slightly unconventional, is entirely optional. It's flexible enough that you have the choice of running as root and letting specific tasks drop privileges, or running unprivileged and letting specific tasks request higher privileges.
 
+Note that the run log will be owned by the user that runs **mission**.
+
 ## Task types
 
 ### Built in
