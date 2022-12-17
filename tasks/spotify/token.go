@@ -9,12 +9,12 @@ import (
 	"golang.org/x/oauth2"
 )
 
-func getTokenFile(storeDir string) string {
-	return filepath.Join(storeDir, "spotify")
+func getTokenFile(sessionDir string) string {
+	return filepath.Join(sessionDir, "spotify")
 }
 
-func loadToken(storeDir string) (oauth2.Token, error) {
-	contents, err := os.ReadFile(getTokenFile(storeDir))
+func loadToken(sessionDir string) (oauth2.Token, error) {
+	contents, err := os.ReadFile(getTokenFile(sessionDir))
 	if err != nil {
 		return oauth2.Token{}, err
 	}
@@ -24,7 +24,7 @@ func loadToken(storeDir string) (oauth2.Token, error) {
 	return token, err
 }
 
-func saveToken(client *spotify.Client, storeDir string) error {
+func saveToken(client *spotify.Client, sessionDir string) error {
 	token, err := client.Token()
 	if err != nil {
 		return err
@@ -35,5 +35,5 @@ func saveToken(client *spotify.Client, storeDir string) error {
 		return err
 	}
 
-	return os.WriteFile(getTokenFile(storeDir), bytes, 0666)
+	return os.WriteFile(getTokenFile(sessionDir), bytes, 0666)
 }

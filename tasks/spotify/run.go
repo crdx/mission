@@ -43,13 +43,13 @@ func Run(args args.Args, logger *logger.Logger) error {
 		return err
 	}
 
-	token, err := loadToken(args.StoreDir)
+	token, err := loadToken(args.Storage["sessions"])
 	if err != nil {
 		return err
 	}
 
 	client := newAuthenticator(credentials.clientId, credentials.clientSecret).NewClient(&token)
 
-	defer logger.HandleError(saveToken(&client, args.StoreDir), "spotify")
+	defer logger.HandleError(saveToken(&client, args.Storage["sessions"]), "spotify")
 	return savePlaylists(saveDir, &client, logger)
 }
