@@ -37,6 +37,7 @@ linters:
     - nosnakecase
     - varcheck
     - ifshort
+    - gocyclo
 
 linters-settings:
   revive:
