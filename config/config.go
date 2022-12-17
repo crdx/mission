@@ -10,41 +10,41 @@ import (
 )
 
 type Config struct {
-	Tasks   []Task                   `json:"tasks"`
-	User    UserConfig               `json:"user"`
-	PassBin string                   `json:"passBin"`
-	Storage map[string]StorageConfig `json:"storage"`
-	Ping    PingConfig               `json:"ping"`
-	Notify  NotifyConfig             `json:"notify"`
-	Mail    MailConfig               `json:"mail"`
-	Filters []string                 `json:"filters"`
+	Tasks   []Task             `json:"tasks"`
+	User    User               `json:"user"`
+	PassBin string             `json:"passBin"`
+	Storage map[string]Storage `json:"storage"`
+	Ping    Ping               `json:"ping"`
+	Notify  Notify             `json:"notify"`
+	Mail    Mail               `json:"mail"`
+	Filters []string           `json:"filters"`
 }
 
-type UserConfig struct {
+type User struct {
 	Name string `json:"name"`
 }
 
-type StorageConfig struct {
+type Storage struct {
 	Path   string `json:"path"`
 	Commit bool   `json:"commit"`
 	Chown  bool   `json:"chown"`
 }
 
-type PingConfig struct {
+type Ping struct {
 	Enabled  bool   `json:"enabled"`
 	Endpoint string `json:"endpoint"`
 }
 
-type NotifyConfig struct {
+type Notify struct {
 	Enabled bool `json:"enabled"`
 }
 
-type MailConfig struct {
+type Mail struct {
 	Enabled bool   `json:"enabled"`
 	Type    string `json:"type"`
 }
 
-func (self PingConfig) GetEndpoint() (string, error) {
+func (self Ping) GetEndpoint() (string, error) {
 	if strings.Contains(self.Endpoint, "%s") {
 		hostname, err := os.Hostname()
 		if err != nil {
