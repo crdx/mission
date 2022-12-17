@@ -53,11 +53,7 @@ func validate(config Config) error {
 		return fmt.Errorf("unable to find valid user (uid is %d)", userInfo.UserId)
 	}
 
-	if config.PassBin == "" {
-		return fmt.Errorf("missing PassBin")
-	}
-
-	if !util.IsExecutable(config.PassBin) {
+	if config.PassBin != "" && !util.IsExecutable(config.PassBin) {
 		return fmt.Errorf("PassBin (%s) is not an executable file", config.PassBin)
 	}
 
