@@ -15,7 +15,15 @@ func validate(config Config) error {
 	}
 
 	for _, task := range config.Tasks {
-		if task.External {
+		if task.Type == "" {
+			return fmt.Errorf("type for tasks.%s is missing", task.Slug)
+		}
+
+		if !util.Contains(ValidTaskTypes, task.Type) {
+			return fmt.Errorf("type for tasks.%s (%s) is invalid", task.Slug, task.Type)
+		}
+
+		if task.Type == TaskTypeExec {
 			if !util.IsExecutable(task.EntryPoint) {
 				return fmt.Errorf("entrypoint for tasks.%s (%s) does not exist or is not executable", task.Slug, task.EntryPoint)
 			}
@@ -29,14 +37,14 @@ func validate(config Config) error {
 
 			if strings.HasPrefix(str, "#!/bin/bash\n") {
 				if !strings.HasPrefix(str, "#!/bin/bash\nset -euo pipefail\n") {
-					return fmt.Errorf("external bash scripts must start with set -euo pipefail")
+					return fmt.Errorf("bash scripts must start with set -euo pipefail")
 				}
 			}
 		}
 
-		if !task.External {
-			if task.GetBuiltIn() == nil {
-				return fmt.Errorf("built in task %s has no implementor", task.Slug)
+		if task.Type == TaskTypeBuiltIn {
+			if task.GetBuiltInAction() == nil {
+				return fmt.Errorf("built in task %s has no implementation", task.Slug)
 			}
 		}
 	}

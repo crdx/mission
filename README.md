@@ -4,7 +4,7 @@
 
 ## Features
 
-- Tasks can be external scripts, binaries, or built in (written in Go).
+- Tasks can be executable scripts, binaries, or built in (written in Go).
 - Schedule tasks to run as part of a system cronjob, or manually.
 - Post-tasks which run after other tasks. Useful for when filesystem backups need to run after cloud backups.
 - Configurable storage directories available to each task via its environment.
@@ -94,12 +94,12 @@ The most important section: the list of tasks. Each task should have the followi
 
 | Field | Description |
 | ----- | ----------- |
-| slug | A unique lowercase label identifying this task.<br><br>If this is an external task then this corresponds to the name of the directory within the `tasks` directory.<br><br>If this is a built in task then this corresponds to the value used by the `GetBuiltIn` method in `task/task.go`. |
+| slug | A unique lowercase label identifying this task.<br><br>If this is an `exec` task then this is the name of the directory within the `tasks` directory.<br><br>If this is a `builtin` task then this is the value used by the `GetBuiltInAction` method in `config/task.go`. |
 | name | A user-friendly name for this task. |
+| type | Type of the task. Should be `exec` or `builtin`. See [Task types](#task-types) for more information. |
 | scheduled | Whether this task should run if called without any specified tasks with `-t/--task`.<br><br>Tasks that are not scheduled can still be run manually. |
-| external | Whether this task is external or built in. |
 | post | Whether this task should run after all other tasks have run and after commit and [chown](#chown) operations are complete. |
-| entrypoint | (Optional) Path to script or binary entrypoint. Overrides the lookup done via `storage.tasks.path`, and only applies to external tasks. |
+| entrypoint | (Optional) Path to executable entrypoint. Overrides the lookup done via `storage.tasks.path`, and only applies to exec tasks. |
 
 ### user
 
@@ -111,7 +111,7 @@ This user is used as the file owner, and as the recipient of notifications and e
 
 Path to the `pass` binary.
 
-This does not _have_ to be [pass][pass], but it should be a binary with an API compatible with your tasks. For built in tasks there is a `GetPassValue` helper available that will run it with a single argument, and for external tasks it's passed as an environment variable so it depends entirely on how your tasks invoke it.
+This does not _have_ to be [pass][pass], but it should be a binary with an API compatible with your tasks. For built in tasks there is a `GetPassValue` helper available that will run it with a single argument, and for exec tasks it's passed as an environment variable so it depends entirely on how your tasks invoke it.
 
 ### storage
 
@@ -177,13 +177,13 @@ Note that the run log will be owned by the user that runs **mission**.
 
 ### Built in
 
-Built in tasks should be implemented in Go under the `tasks` directory. The directory corresponds to the task slug and should be the package name. The `GetBuiltIn` method in `task/task.go` should be modified to reference the task. Each task is a package named after the slug containing a `Run` method.
+Built in tasks should be implemented in Go under the `tasks` directory. The directory corresponds to the task slug and should be the package name. The `GetBuiltInAction` method in `config/task.go` should be modified to reference the task. Each task is a package named after the slug containing a `Run` method. If you want to do this then you probably want to maintain a fork of this repository for yourself.
 
 See the example in `tasks/spotify`.
 
-### External
+### Exec
 
-External tasks are executable scripts or binaries named `run` located within a directory named after the task slug in the `tasks` directory in the working directory. For example a task named `mail` would be resolved to the executable found at `tasks/mail/run`.
+Exec tasks are executable scripts or binaries named `run` located within a directory named after the task slug in the `tasks` directory in the working directory. For example, a task named `mail` would be resolved to the executable found at `tasks/mail/run`.
 
 ## Environment
 
@@ -202,7 +202,7 @@ If the directory is defined as
 
 ```json
 "storage": {
-    "foo": { "path": "~/foo", "chown": true, "commit": true },
+    "foo": { "path": "~/foo" },
 }
 ```
 

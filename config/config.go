@@ -7,8 +7,42 @@ import (
 	"strings"
 
 	"github.com/crdx/mission/jsonc"
-	"github.com/crdx/mission/task"
 )
+
+type Config struct {
+	Tasks   Tasks                    `json:"tasks"`
+	User    UserConfig               `json:"user"`
+	PassBin string                   `json:"passBin"`
+	Storage map[string]StorageConfig `json:"storage"`
+	Ping    PingConfig               `json:"ping"`
+	Notify  NotifyConfig             `json:"notify"`
+	Mail    MailConfig               `json:"mail"`
+	Filters []string                 `json:"filters"`
+}
+
+type UserConfig struct {
+	Name string `json:"name"`
+}
+
+type StorageConfig struct {
+	Path   string `json:"path"`
+	Commit bool   `json:"commit"`
+	Chown  bool   `json:"chown"`
+}
+
+type PingConfig struct {
+	Enabled  bool   `json:"enabled"`
+	Endpoint string `json:"endpoint"`
+}
+
+type NotifyConfig struct {
+	Enabled bool `json:"enabled"`
+}
+
+type MailConfig struct {
+	Enabled bool   `json:"enabled"`
+	Type    string `json:"type"`
+}
 
 func (self PingConfig) GetEndpoint() (string, error) {
 	if strings.Contains(self.Endpoint, "%s") {
@@ -23,7 +57,7 @@ func (self PingConfig) GetEndpoint() (string, error) {
 	}
 }
 
-func (self Config) GetRunnableTasks(slugs []string) task.Tasks {
+func (self Config) GetRunnableTasks(slugs []string) Tasks {
 	if len(slugs) > 0 {
 		return self.getTasksBySlugs(slugs)
 	} else {
@@ -63,7 +97,7 @@ func Get(path string) (config Config, err error) {
 	err = validate(config)
 
 	if err != nil {
-		err = fmt.Errorf("unable to validate %s: %w", path, err)
+		err = fmt.Errorf("validation failure for %s: %w", path, err)
 		return
 	}
 
@@ -72,8 +106,8 @@ func Get(path string) (config Config, err error) {
 
 // —————————————————————————————————————————————————————————————————————————————————————————————————
 
-func (self Config) getScheduledTasks() task.Tasks {
-	var tasks task.Tasks
+func (self Config) getScheduledTasks() Tasks {
+	var tasks Tasks
 
 	for _, task := range self.Tasks {
 		if task.Scheduled {
@@ -84,8 +118,8 @@ func (self Config) getScheduledTasks() task.Tasks {
 	return tasks
 }
 
-func (self Config) getTasksBySlugs(slugs []string) task.Tasks {
-	var tasks task.Tasks
+func (self Config) getTasksBySlugs(slugs []string) Tasks {
+	var tasks Tasks
 
 	for _, slug := range slugs {
 		for _, task := range self.Tasks {

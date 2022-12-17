@@ -1,11 +1,11 @@
 {
     "tasks": [
-        { "slug": "mail",      "name": "Mail",     "scheduled": true,  "external": true  },
-        { "slug": "contacts",  "name": "Contacts", "scheduled": true,  "external": true  },
-        { "slug": "calendar",  "name": "Calendar", "scheduled": true,  "external": true  },
-        { "slug": "spotify",   "name": "Spotify",  "scheduled": true,  "external": false },
+        { "slug": "mail",     "name": "Mail",     "scheduled": true, "type": "exec"  },
+        { "slug": "contacts", "name": "Contacts", "scheduled": true, "type": "exec"  },
+        { "slug": "calendar", "name": "Calendar", "scheduled": true, "type": "exec"  },
+        { "slug": "spotify",  "name": "Spotify",  "scheduled": true, "type": "builtin" },
 
-        { "slug": "filesystem", "name": "Filesystem", "scheduled": true,  "external": true, "post": true }
+        { "slug": "filesystem", "name": "Filesystem", "scheduled": true, "type": "exec", "post": true }
     ],
 
     "user": {

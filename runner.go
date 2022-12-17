@@ -10,7 +10,6 @@ import (
 	"github.com/crdx/mission/config"
 	"github.com/crdx/mission/logger"
 	"github.com/crdx/mission/notify"
-	"github.com/crdx/mission/task"
 	"github.com/crdx/mission/util"
 )
 
@@ -101,7 +100,7 @@ func (self Runner) Run(slugs []string) error {
 	return nil
 }
 
-func (Runner) splitTasks(tasks task.Tasks) (pre task.Tasks, post task.Tasks) {
+func (Runner) splitTasks(tasks config.Tasks) (pre config.Tasks, post config.Tasks) {
 	for _, task := range tasks {
 		if task.Post {
 			post = append(post, task)
@@ -112,35 +111,42 @@ func (Runner) splitTasks(tasks task.Tasks) (pre task.Tasks, post task.Tasks) {
 	return
 }
 
-func (self Runner) runTasks(tasks task.Tasks) {
+func (self Runner) runTasks(tasks config.Tasks) {
 	for _, task := range tasks {
 		self.logger.HandleError(self.runOne(task), task.Slug)
 	}
 }
 
-func (self Runner) runOne(task task.Task) error {
+func (self Runner) runOne(task config.Task) error {
 	self.logger.Header("Task: " + task.Name)
 
-	if task.External {
-		return self.runExternal(self.getArgs(), task.EntryPoint)
-	} else {
-		return task.GetBuiltIn()(self.getArgs(), self.logger)
+	switch task.Type {
+	case config.TaskTypeExec:
+		return self.runExec(task)
+	case config.TaskTypeBuiltIn:
+		return self.runBuiltIn(task)
 	}
+
+	return nil
 }
 
-func (self Runner) runExternal(args args.Args, entryPoint string) error {
-	absoluteEntryPoint, err := filepath.Abs(entryPoint)
+func (self Runner) runBuiltIn(task config.Task) error {
+	return task.GetBuiltInAction()(self.getArgs(), self.logger)
+}
+
+func (self Runner) runExec(task config.Task) error {
+	entryPoint, err := filepath.Abs(task.EntryPoint)
 	if err != nil {
 		return err
 	}
 
 	ctx := util.NewExecContext(
-		filepath.Dir(absoluteEntryPoint),
+		filepath.Dir(entryPoint),
 		func(str string) { self.logger.Println(str) },
-		args.ToEnvironmentVariables(),
+		self.getArgs().ToEnvironmentVariables(),
 	)
 
-	return ctx.Run(absoluteEntryPoint)
+	return ctx.Run(entryPoint)
 }
 
 func (self Runner) getArgs() args.Args {

@@ -1,23 +1,37 @@
-package task
+package config
 
 import (
 	"fmt"
 
+	"github.com/crdx/mission/args"
+	"github.com/crdx/mission/logger"
 	"github.com/crdx/mission/tasks/spotify"
 
 	"github.com/crdx/col"
 )
 
+type Action func(args args.Args, logger *logger.Logger) error
+
+const (
+	TaskTypeExec    = "exec"
+	TaskTypeBuiltIn = "builtin"
+)
+
+var ValidTaskTypes = []string{
+	TaskTypeExec,
+	TaskTypeBuiltIn,
+}
+
 type Task struct {
 	Slug       string `json:"slug"`
 	Name       string `json:"name"`
+	Type       string `json:"type"`
 	Scheduled  bool   `json:"scheduled"`
-	External   bool   `json:"external"`
 	Post       bool   `json:"post"`
 	EntryPoint string `json:"entrypoint"`
 }
 
-func (self Task) GetBuiltIn() Action {
+func (self Task) GetBuiltInAction() Action {
 	tasks := map[string]Action{
 		"spotify": spotify.Run,
 	}
