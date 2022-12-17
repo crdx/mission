@@ -31,7 +31,7 @@ func GetAbsoluteDir(relPath string, userName string) (string, error) {
 	}
 }
 
-func IsGitDirectory(str string) bool {
+func IsGitRepository(str string) bool {
 	return IsDirectory(path.Join(str, ".git"))
 }
 

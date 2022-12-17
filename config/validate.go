@@ -72,8 +72,8 @@ func validate(config Config) error {
 			return fmt.Errorf("dirs.%s.path (%s) is not a directory", key, dir.Path)
 		}
 
-		if dir.Commit && !util.IsGitDirectory(dir.Path) {
-			return fmt.Errorf("dirs.%s.commit is true but dirs.%s.path (%s) is not a git directory", key, key, dir.Path)
+		if dir.Commit && !util.IsGitRepository(dir.Path) {
+			return fmt.Errorf("dirs.%s.commit is true but dirs.%s.path (%s) is not a git repository", key, key, dir.Path)
 		}
 	}
 
