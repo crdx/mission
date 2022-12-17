@@ -25,7 +25,11 @@ func validate(config Config) error {
 
 		if task.Type == TaskTypeExec {
 			if !util.IsExecutable(task.EntryPoint) {
-				return fmt.Errorf("entrypoint for tasks.%s (%s) does not exist or is not executable", task.Slug, task.EntryPoint)
+				return fmt.Errorf(
+					"entrypoint for tasks.%s (%s) does not exist or is not executable",
+					task.Slug,
+					task.EntryPoint,
+				)
 			}
 
 			bytes, err := os.ReadFile(task.EntryPoint)
@@ -79,7 +83,11 @@ func validate(config Config) error {
 		}
 
 		if dir.Commit && !util.IsGitRepository(dir.Path) {
-			return fmt.Errorf("dirs.%s.commit is true but dirs.%s.path (%s) is not a git repository", key, key, dir.Path)
+			return fmt.Errorf(
+				"dirs.%s.commit is true but dirs.%s.path (%s) is not a git repository",
+				key,
+				key, dir.Path,
+			)
 		}
 	}
 
