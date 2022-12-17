@@ -54,14 +54,14 @@ func (self *Logger) FoundProblems() bool {
 
 func (self *Logger) HandleError(err error, source string) {
 	if err != nil {
-		self.write(fmt.Sprintf("ERROR(%s): %s\n", source, err), true)
+		self.write(fmt.Sprintf("ERROR: %s\n", err), true)
 		self.Errors = append(self.Errors, Problem{err, source})
 	}
 }
 
 func (self *Logger) HandleWarning(err error, source string) {
 	if err != nil {
-		self.write(fmt.Sprintf("WARN(%s): %s\n", source, err), true)
+		self.write(fmt.Sprintf("WARN: %s\n", err), true)
 		self.Warnings = append(self.Warnings, Problem{err, source})
 	}
 }
