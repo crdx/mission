@@ -191,7 +191,25 @@ func (self Runner) mailFinish(completedIn time.Duration) {
 	self.logger.HandleError(util.SendMail(self.config.User.Name, subject, body), "mailFinish")
 }
 
+func (self Runner) getChownables() []config.Storage {
+	chownables := []config.Storage{}
+
+	for _, dir := range self.config.Storage {
+		if dir.Chown {
+			chownables = append(chownables, dir)
+		}
+	}
+
+	return chownables
+}
+
 func (self Runner) chownFiles() {
+	chownables := self.getChownables()
+
+	if len(chownables) == 0 {
+		return
+	}
+
 	self.logger.Header("Chown")
 
 	userInfo, err := util.GetUserInfo(self.config.User.Name)
@@ -200,11 +218,7 @@ func (self Runner) chownFiles() {
 		return
 	}
 
-	for _, dir := range self.config.Storage {
-		if !dir.Chown {
-			continue
-		}
-
+	for _, dir := range chownables {
 		self.logger.Printf("%s: ", dir.Path)
 		count, err := util.ChownDirectory(dir.Path, userInfo.UserId, userInfo.GroupId)
 		self.logger.PrintRawf("%d %s\n", count, util.Pluralise(count, "file", "files"))
@@ -220,7 +234,25 @@ func (self Runner) getCommitMessage() string {
 	)
 }
 
+func (self Runner) getCommitables() []config.Storage {
+	commitables := []config.Storage{}
+
+	for _, dir := range self.config.Storage {
+		if dir.Commit {
+			commitables = append(commitables, dir)
+		}
+	}
+
+	return commitables
+}
+
 func (self Runner) commitRepositories() {
+	commitables := self.getCommitables()
+
+	if len(commitables) == 0 {
+		return
+	}
+
 	self.logger.Header("Commit")
 
 	writer := func(str string) {
@@ -229,11 +261,7 @@ func (self Runner) commitRepositories() {
 
 	leadingNewLine := false
 
-	for _, dir := range self.config.Storage {
-		if !dir.Commit {
-			continue
-		}
-
+	for _, dir := range commitables {
 		if leadingNewLine {
 			self.logger.PrintRawf("\n")
 		}
