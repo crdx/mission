@@ -4,12 +4,11 @@
 
 ## Features
 
-- Built in (written in Go) tasks or external scripts or binaries.
-- Scheduled tasks to run as part of a system cronjob, as well as manually.
-- Post-tasks to be run after other tasks. (Useful for when filesystem backups need to run after cloud backups.)
-- Multiple types of storage directory for backed up files (sync, local, ...).
+- Tasks can be external scripts, binaries, or built in (written in Go).
+- Schedule tasks to run as part of a system cronjob, or manually.
+- Post-tasks which run after other tasks. Useful for when filesystem backups need to run after cloud backups.
+- Configurable storage directories available to each task via its environment.
 - Handle [chowning](#chown) and committing files in storage directories.
-- Helper scripts shared by all tasks.
 - Ping (via HTTP) a remote endpoint when a run completes without errors.
 - Send an email (via sendmail) with the log when a run completes.
 - Show a desktop notification (via notify-send) when a run completes.
@@ -124,16 +123,23 @@ A set of storage directories for tasks to use for backup data or logfiles. Each 
 | chown | If `true` then after all the non-post tasks have run all files in this directory will be [chowned](#chown) to the user set in the `user.name` field.
 | commit | If `true` then after all the non-post tasks have run all files in this directory will be committed with git.
 
-Five types of storage directory are supported.
+Two storage directories are mandatory.
 
 | Name | Purpose |
 | ---- | ------- |
-| sync | Backup files that are to be synced to other machines via some form of cloud sync service. |
+| tasks | Directory where tasks are kept. Can be overridden on a task-by-task basis via the task definition. |
+| logs | Logfiles that need to be saved. The main run log will be saved as a timestamped file here. |
+
+Other storage directories depend on your workflow and needs. Some examples:
+
+| Name | Purpose |
+| ---- | ------- |
+| sync | Backup files that are to be synced via some form of cloud sync service. |
 | local | Backup files that are expected to remain on the local machine. |
-| logs  | Logfiles that need to be saved. The main run log will be saved as a dated file here. |
 | helpers | Helper scripts that need to be shared across tasks. |
-| tasks | Directory where tasks can be found. Can be overridden on a per-task basis. |
-| store | (Optional) Cached sessions. |
+| sessions | Cached sessions. |
+
+All storage directories are available to tasks via [environment variables](#environment).
 
 ### ping
 
@@ -183,15 +189,24 @@ External tasks are executable scripts or binaries named `run` located within a d
 
 Each task runs with environment variables available corresponding to certain fields in the configuration file.
 
-| Variable | Field | Notes |
-| -------- | ----- | ----- |
-| `SYNC_FILES_DIR` | `storage.sync.path` | Resolved absolute path |
-| `LOCAL_FILES_DIR` | `storage.local.path` | Resolved absolute path |
-| `HELPERS_DIR` | `storage.helpers.path` | Resolved absolute path |
-| `LOGS_DIR` | `storage.logs.path` | Resolved absolute path |
-| `STORE_DIR` | `storage.store.path` | Resolved absolute path |
-| `PASS_BIN` | `passBin` | Resolved absolute path |
-| `TARGET_USER` |  `user.name` | |
+| Variable | Field |
+| -------- | ----- |
+| `LOGS_DIR` | `storage.logs.path` |
+| `TASKS_DIR` | `storage.tasks.path` |
+| `PASS_BIN` | `passBin` |
+| `TARGET_USER` |  `user.name` |
+
+Any additional storage directories will also be available in the environment following the same convention as above.
+
+If the directory is defined as
+
+```json
+"storage": {
+    "foo": { "path": "~/foo", "chown": true, "commit": true },
+}
+```
+
+then the corresponding environment variable will be `FOO_DIR`.
 
 ## Contributions
 

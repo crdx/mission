@@ -144,12 +144,14 @@ func (self Runner) runExternal(args args.Args, entryPoint string) error {
 }
 
 func (self Runner) getArgs() args.Args {
+	storage := map[string]string{}
+
+	for name, config := range self.config.Storage {
+		storage[name] = config.Path
+	}
+
 	return args.New(
-		self.config.Storage["sync"].Path,
-		self.config.Storage["local"].Path,
-		self.config.Storage["helpers"].Path,
-		self.config.Storage["logs"].Path,
-		self.config.Storage["store"].Path,
+		storage,
 		self.config.User.Name,
 		self.config.PassBin,
 	)

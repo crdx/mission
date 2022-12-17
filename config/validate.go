@@ -57,13 +57,15 @@ func validate(config Config) error {
 		return fmt.Errorf("PassBin (%s) is not an executable file", config.PassBin)
 	}
 
-	for _, key := range []string{"sync", "local", "logs", "helpers", "tasks"} {
+	for _, key := range []string{"tasks", "logs"} {
 		dir := config.Storage[key]
 
 		if dir.Path == "" {
 			return fmt.Errorf("missing storage.%s.path", key)
 		}
+	}
 
+	for key, dir := range config.Storage {
 		if !util.IsDirectory(dir.Path) {
 			return fmt.Errorf("dirs.%s.path (%s) is not a directory", key, dir.Path)
 		}

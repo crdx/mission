@@ -53,7 +53,7 @@ func Run(args args.Args, logger *logger.Logger) error {
 		return err
 	}
 
-	saveDir, err := getSaveDir(args.SyncFilesDir)
+	saveDir, err := getSaveDir(args.Storage["sync"])
 	if err != nil {
 		return err
 	}
