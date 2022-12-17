@@ -10,7 +10,7 @@ import (
 )
 
 type Config struct {
-	Tasks   Tasks                    `json:"tasks"`
+	Tasks   []Task                   `json:"tasks"`
 	User    UserConfig               `json:"user"`
 	PassBin string                   `json:"passBin"`
 	Storage map[string]StorageConfig `json:"storage"`
@@ -57,7 +57,7 @@ func (self PingConfig) GetEndpoint() (string, error) {
 	}
 }
 
-func (self Config) GetRunnableTasks(slugs []string) Tasks {
+func (self Config) GetRunnableTasks(slugs []string) []Task {
 	if len(slugs) > 0 {
 		return self.getTasksBySlugs(slugs)
 	} else {
@@ -106,8 +106,8 @@ func Get(path string) (config Config, err error) {
 
 // —————————————————————————————————————————————————————————————————————————————————————————————————
 
-func (self Config) getScheduledTasks() Tasks {
-	var tasks Tasks
+func (self Config) getScheduledTasks() []Task {
+	var tasks []Task
 
 	for _, task := range self.Tasks {
 		if task.Scheduled {
@@ -118,8 +118,8 @@ func (self Config) getScheduledTasks() Tasks {
 	return tasks
 }
 
-func (self Config) getTasksBySlugs(slugs []string) Tasks {
-	var tasks Tasks
+func (self Config) getTasksBySlugs(slugs []string) []Task {
+	var tasks []Task
 
 	for _, slug := range slugs {
 		for _, task := range self.Tasks {

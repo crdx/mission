@@ -100,7 +100,7 @@ func (self Runner) Run(slugs []string) error {
 	return nil
 }
 
-func (Runner) splitTasks(tasks config.Tasks) (pre config.Tasks, post config.Tasks) {
+func (Runner) splitTasks(tasks []config.Task) (pre []config.Task, post []config.Task) {
 	for _, task := range tasks {
 		if task.Post {
 			post = append(post, task)
@@ -111,7 +111,7 @@ func (Runner) splitTasks(tasks config.Tasks) (pre config.Tasks, post config.Task
 	return
 }
 
-func (self Runner) runTasks(tasks config.Tasks) {
+func (self Runner) runTasks(tasks []config.Task) {
 	for _, task := range tasks {
 		self.logger.HandleError(self.runOne(task), task.Slug)
 	}

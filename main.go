@@ -143,7 +143,13 @@ func main() {
 	}
 
 	if opts.List {
-		config.Tasks.Print(opts.Verbose)
+		for _, task := range config.Tasks {
+			if opts.Verbose {
+				fmt.Println(task.GetLongString())
+			} else {
+				fmt.Println(task.GetShortString())
+			}
+		}
 		os.Exit(0)
 	}
 
