@@ -54,7 +54,7 @@ func (self Task) GetLongString() string {
 
 func (self Task) GetDisplayEnabled() string {
 	if self.Scheduled {
-		return col.Green("auto")
+		return col.Green("scheduled")
 	} else {
 		return col.Red("manual")
 	}
