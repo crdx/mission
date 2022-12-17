@@ -85,6 +85,8 @@ The format of the configuration file is a more relaxed form of JSON ("jsonc") th
 
 If the path is not passed via `-c/--config` then it will be assumed to be `mission.config.json` in the working directory.
 
+A prefixed `~` in any path will be transformed into the home directory of the user set in the `user.name` field.
+
 See `mission.sample.json` for a sample configuration file, or carry on reading for a more detailed description of each section.
 
 ### tasks
@@ -112,15 +114,13 @@ Path to the `pass` binary.
 
 This does not _have_ to be [pass][pass], but it should be a binary with an API compatible with your tasks. For built in tasks there is a `GetPassValue` helper available that will run it with a single argument, and for external tasks it's passed as an environment variable so it depends entirely on how your tasks invoke it.
 
-A `~` prefix in the path will be transformed into the home directory of the user set in the `user.name` field.
-
 ### storage
 
 A set of storage directories for tasks to use for backup data or logfiles. Each directory should have the following fields.
 
 | Field | Description |
 | ----- | ----------- |
-| path | The path to the directory.<br><br>A `~` prefix in the path will be transformed into the home directory of the user set in the `user.name` field.
+| path | The path to the directory.
 | chown | If `true` then after all the non-post tasks have run all files in this directory will be [chowned](#chown) to the user set in the `user.name` field.
 | commit | If `true` then after all the non-post tasks have run all files in this directory will be committed with git.
 
