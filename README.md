@@ -83,7 +83,7 @@ Parse the configuration file and dump it as JSON after transformations and valid
 
 The format of the configuration file is a more relaxed form of JSON ("jsonc") that supports comments using `//`.
 
-If the path is not passed via `-c/--config` then it will be assumed to be `mission.json` in the working directory.
+If the path is not passed via `-c/--config` then it will be assumed to be `mission.config.json` in the working directory.
 
 See `mission.sample.json` for a sample configuration file, or carry on reading for a more detailed description of each section.
 

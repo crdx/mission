@@ -57,7 +57,7 @@ type Opts struct {
 }
 
 const (
-	DefaultConfigFilePath = "mission.json"
+	DefaultConfigFilePath = "mission.config.json"
 	LockFilePath          = "/tmp/mission.lock"
 )
 
