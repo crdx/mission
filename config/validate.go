@@ -3,6 +3,7 @@ package config
 import (
 	"fmt"
 	"os"
+	"os/exec"
 	"regexp"
 	"strings"
 
@@ -98,7 +99,7 @@ func validate(config Config) error {
 	}
 
 	if config.Notify.Enabled {
-		if !util.IsExecutable("/bin/notify-send") {
+		if _, err := exec.LookPath("notify-send"); err != nil {
 			return fmt.Errorf("missing notify-send dependency required by notify")
 		}
 	}
@@ -106,6 +107,10 @@ func validate(config Config) error {
 	if config.Mail.Enabled {
 		if config.Mail.Type != "sendmail" {
 			return fmt.Errorf("sendmail is the only valid value for mail.type")
+		}
+
+		if _, err := exec.LookPath("sendmail"); err != nil {
+			return fmt.Errorf("missing sendmail dependency required by mail")
 		}
 	}
 
