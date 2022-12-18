@@ -117,7 +117,7 @@ func validate(config Config) error {
 	for _, str := range config.Filters {
 		_, err = regexp.Compile(str)
 		if err != nil {
-			return fmt.Errorf("filter is invalid: %w", err)
+			return fmt.Errorf("filter regex is invalid: %w", err)
 		}
 	}
 
