@@ -169,7 +169,7 @@ func (self Runner) mailStart() {
 	subject := "run started"
 	body := "Run started."
 
-	self.logger.HandleError(util.SendMail(self.config.User.Name, subject, body), "mailStart")
+	self.logger.HandleError(util.SendMail(self.config.User.Name, self.config.User.Email, subject, body), "mailStart")
 }
 
 func (self Runner) mailFinish(completedIn time.Duration) {
@@ -188,7 +188,7 @@ func (self Runner) mailFinish(completedIn time.Duration) {
 		strings.Join(self.logger.FilteredLines(), ""),
 	)
 
-	self.logger.HandleError(util.SendMail(self.config.User.Name, subject, body), "mailFinish")
+	self.logger.HandleError(util.SendMail(self.config.User.Name, self.config.User.Email, subject, body), "mailFinish")
 }
 
 func (self Runner) getChownables() []config.Storage {

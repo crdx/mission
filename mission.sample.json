@@ -9,7 +9,8 @@
     ],
 
     "user": {
-        "name": "anon"
+        "name": "anon",
+        "email": "anon@example.com"
     },
 
     "passBin": "~/bin/pass",

@@ -2,6 +2,7 @@ package config
 
 import (
 	"fmt"
+	"net/mail"
 	"os"
 	"os/exec"
 	"regexp"
@@ -55,7 +56,7 @@ func validate(config Config) error {
 	}
 
 	if config.User.Name == "" {
-		return fmt.Errorf("missing user")
+		return fmt.Errorf("missing username")
 	}
 
 	userInfo, err := util.GetUserInfo(config.User.Name)
@@ -64,6 +65,16 @@ func validate(config Config) error {
 	}
 	if userInfo.UserId == 0 {
 		return fmt.Errorf("unable to find valid user (uid is %d)", userInfo.UserId)
+	}
+
+	if config.Mail.Enabled {
+		if config.User.Email == "" {
+			return fmt.Errorf("missing email address")
+		}
+
+		if _, err := mail.ParseAddress(config.User.Email); err != nil {
+			return fmt.Errorf("email address is invalid: %s", err)
+		}
 	}
 
 	if config.PassBin != "" && !util.IsExecutable(config.PassBin) {

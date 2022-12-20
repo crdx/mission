@@ -8,13 +8,11 @@ import (
 	"github.com/crdx/hereduck"
 )
 
-func SendMail(toName, subject, body string) error {
+func SendMail(name, email, subject, body string) error {
 	hostname, err := os.Hostname()
 	if err != nil {
 		return err
 	}
-
-	toAddress := "root@" + hostname
 
 	template := hereduck.D(`
 		To: %s <%s>
@@ -26,14 +24,14 @@ func SendMail(toName, subject, body string) error {
 
 	payload := fmt.Sprintf(
 		template,
-		toName,
-		toAddress,
+		name,
+		email,
 		hostname,
 		subject,
 		body,
 	)
 
-	command := exec.Command("sendmail", "-i", "root")
+	command := exec.Command("sendmail", "-i", email)
 
 	stdin, err := command.StdinPipe()
 	if err != nil {

@@ -103,9 +103,12 @@ The most important section: the list of tasks. Each task should have the followi
 
 ### user
 
-Should contain one field, `name`, with the username of the system's unprivileged user.
+User-related configuration.
 
-This user is used as the file owner, and as the recipient of notifications and emails.
+| Field | Description |
+| ----- | ----------- |
+| name | The username of the system's unprivileged user. Used as the file owner and the recipient of notifications. |
+| email | Address used as the recipient of emails. Only mandatory if `mail.enabled` is `true`. |
 
 ### passBin
 
@@ -155,7 +158,7 @@ The user set in the `user.name` field will be notified with `notify-send` when t
 
 Only one type is currently supported: `sendmail`.
 
-An email will be sent via `sendmail` to the user set in the `user.name` field when the run starts and finishes.
+An email will be sent via `sendmail` to the email set in the `user.email` field when the run starts and finishes.
 
 The run log without filtered items (see [filters](#filters)) will be included in the email.
 
