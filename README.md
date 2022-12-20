@@ -178,15 +178,15 @@ Note that the run log will be owned by the user that runs **mission**.
 
 ## Task types
 
+### Exec
+
+Exec tasks are executable scripts or binaries named `run` located within a directory named after the task slug in the `tasks` directory in the working directory. For example, a task named `mail` would be resolved to the executable found at `tasks/mail/run`.
+
 ### Built in
 
 Built in tasks should be implemented in Go under the `tasks` directory. The directory corresponds to the task slug and should be the package name. The `GetBuiltInAction` method in `config/task.go` should be modified to reference the task. Each task is a package named after the slug containing a `Run` method. If you want to do this then you probably want to maintain a fork of this repository for yourself.
 
 See the example in `tasks/spotify`.
-
-### Exec
-
-Exec tasks are executable scripts or binaries named `run` located within a directory named after the task slug in the `tasks` directory in the working directory. For example, a task named `mail` would be resolved to the executable found at `tasks/mail/run`.
 
 ## Environment
 
