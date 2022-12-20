@@ -3,6 +3,7 @@ module github.com/crdx/mission
 go 1.19
 
 require (
+	github.com/crdx/assert v1.0.0
 	github.com/crdx/col v1.0.0
 	github.com/crdx/duckopt v1.0.0
 	github.com/crdx/hereduck v1.0.0
