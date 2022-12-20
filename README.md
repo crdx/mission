@@ -6,6 +6,7 @@
 
 - Tasks can be executable scripts, binaries, or built in (written in Go).
 - Schedule tasks to run as part of a system cronjob, or manually.
+- Robust [failure handling](#failure-handling) ensures failing tasks are not missed.
 - Post-tasks which run after other tasks. Useful for when filesystem backups need to run after cloud backups.
 - Configurable storage directories available to each task via its environment.
 - Handle [chowning](#chown) and committing files in storage directories.
@@ -165,6 +166,15 @@ The run log without filtered items (see [filters](#filters)) will be included in
 ### filters
 
 A list of regexes to use to filter out log lines before including them in the email. Some tasks may produce a lot of output which should still be saved to disk but would be excessive to include in an email. It can also be used to filter out sensitive lines.
+
+## Failure handling
+
+Ensuring that failures are brought to the user's attention is important. If a task exits with a non-zero exit code it will be considered to have failed. All other tasks will still be run to prevent a single task's failure affecting the rest of the backup, however, once a task fails the overall run's behaviour changes as follows:
+
+- The process will exit with a non-zero exit code (1) and print the error count to stderr. The convention is that a cronjob that outputs to stderr has something important to say.
+- The email subject will be prefixed with "[FAILURE]".
+- The ping endpoint will NOT be pinged.
+- Errors will be summarised in a section at the bottom of the run log.
 
 ## Chown?
 
