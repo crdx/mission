@@ -23,12 +23,3 @@ func GetRunType(headless bool) string {
 func FormatDuration(duration time.Duration) string {
 	return duration.Truncate(time.Millisecond).String()
 }
-
-func Contains[T comparable](items []T, item T) bool {
-	for _, x := range items {
-		if x == item {
-			return true
-		}
-	}
-	return false
-}

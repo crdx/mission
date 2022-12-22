@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	"github.com/crdx/mission/util"
+	"golang.org/x/exp/slices"
 )
 
 func validate(config Config) error {
@@ -21,7 +22,7 @@ func validate(config Config) error {
 			return fmt.Errorf("type for tasks.%s is missing", task.Slug)
 		}
 
-		if !util.Contains(ValidTaskTypes, task.Type) {
+		if !slices.Contains(ValidTaskTypes, task.Type) {
 			return fmt.Errorf("type for tasks.%s (%s) is invalid", task.Slug, task.Type)
 		}
 

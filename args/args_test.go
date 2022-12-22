@@ -5,7 +5,7 @@ import (
 
 	"github.com/crdx/assert"
 	"github.com/crdx/mission/args"
-	"github.com/crdx/mission/util"
+	"golang.org/x/exp/slices"
 )
 
 func TestToEnvironmentVariables(t *testing.T) {
@@ -20,7 +20,7 @@ func TestToEnvironmentVariables(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		if !util.Contains(env, test) {
+		if !slices.Contains(env, test) {
 			t.Errorf("env did not contain %s", test)
 		}
 	}
