@@ -32,7 +32,7 @@ func getSaveDir(root string) (saveDir string, err error) {
 	return
 }
 
-func validate(args args.Args) error {
+func validate(args *args.Args) error {
 	for _, name := range []string{"sync", "sessions"} {
 		if _, ok := args.Storage[name]; !ok {
 			return fmt.Errorf("%s directory missing", name)
@@ -42,7 +42,7 @@ func validate(args args.Args) error {
 	return nil
 }
 
-func Run(args args.Args, logger *logger.Logger) error {
+func Run(args *args.Args, logger *logger.Logger) error {
 	err := validate(args)
 	if err != nil {
 		return err

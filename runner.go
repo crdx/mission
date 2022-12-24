@@ -149,7 +149,7 @@ func (self Runner) runExec(task config.Task) error {
 	return ctx.Run(entryPoint)
 }
 
-func (self Runner) getArgs() args.Args {
+func (self Runner) getArgs() *args.Args {
 	storage := map[string]string{}
 
 	for name, config := range self.config.Storage {

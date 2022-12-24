@@ -13,8 +13,8 @@ type Args struct {
 	PassBin    string
 }
 
-func New(storage map[string]string, targetUser string, passBin string) Args {
-	return Args{
+func New(storage map[string]string, targetUser string, passBin string) *Args {
+	return &Args{
 		TargetUser: targetUser,
 		PassBin:    passBin,
 		Storage:    storage,

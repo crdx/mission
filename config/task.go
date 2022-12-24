@@ -10,7 +10,7 @@ import (
 	"github.com/crdx/col"
 )
 
-type Action func(args args.Args, logger *logger.Logger) error
+type Action func(args *args.Args, logger *logger.Logger) error
 
 const (
 	TaskTypeExec    = "exec"
