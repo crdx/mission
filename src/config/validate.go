@@ -74,7 +74,7 @@ func validate(config Config) error {
 		}
 
 		if _, err := mail.ParseAddress(config.User.Email); err != nil {
-			return fmt.Errorf("email address is invalid: %s", err)
+			return fmt.Errorf("email address is invalid: %w", err)
 		}
 	}
 
