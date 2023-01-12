@@ -8,11 +8,11 @@ import (
 	"github.com/crdx/mission/util"
 )
 
-type NotificationIcon = string
+type Icon = string
 
 const (
-	IconInfo  NotificationIcon = "dialog-information"
-	IconError NotificationIcon = "dialog-error"
+	IconInfo  Icon = "dialog-information"
+	IconError Icon = "dialog-error"
 )
 
 func Start(userName string) error {
@@ -31,7 +31,7 @@ func Fail(userName string, completedIn time.Duration) error {
 
 // —————————————————————————————————————————————————————————————————————————————————————————————————
 
-func notify(icon NotificationIcon, message string, userName string) error {
+func notify(icon Icon, message string, userName string) error {
 	userInfo, err := util.GetUserInfo(userName)
 	if err != nil {
 		return err
