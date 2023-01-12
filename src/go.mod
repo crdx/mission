@@ -8,14 +8,14 @@ require (
 	github.com/crdx/duckopt v1.0.0
 	github.com/crdx/hereduck v1.0.0
 	github.com/zmb3/spotify v1.3.0
-	golang.org/x/oauth2 v0.0.0-20210810183815-faf39c7919d5
+	golang.org/x/exp v0.0.0-20221217163422-3c43f8badb15
+	golang.org/x/oauth2 v0.4.0
 )
 
 require (
 	github.com/docopt/docopt-go v0.0.0-20180111231733-ee0de3bc6815 // indirect
-	github.com/golang/protobuf v1.4.2 // indirect
-	golang.org/x/exp v0.0.0-20221217163422-3c43f8badb15 // indirect
-	golang.org/x/net v0.0.0-20200822124328-c89045814202 // indirect
-	google.golang.org/appengine v1.6.6 // indirect
-	google.golang.org/protobuf v1.25.0 // indirect
+	github.com/golang/protobuf v1.5.2 // indirect
+	golang.org/x/net v0.5.0 // indirect
+	google.golang.org/appengine v1.6.7 // indirect
+	google.golang.org/protobuf v1.28.1 // indirect
 )
