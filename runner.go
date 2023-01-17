@@ -6,11 +6,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/crdx/mission/args"
-	"github.com/crdx/mission/config"
-	"github.com/crdx/mission/logger"
-	"github.com/crdx/mission/notify"
-	"github.com/crdx/mission/util"
+	"github.com/crdx/mission/internal/args"
+	"github.com/crdx/mission/internal/config"
+	"github.com/crdx/mission/internal/logger"
+	"github.com/crdx/mission/internal/notify"
+	"github.com/crdx/mission/internal/util"
 )
 
 const TimeFormat = "2006-01-02 15:04:05"

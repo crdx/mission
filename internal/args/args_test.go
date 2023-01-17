@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/crdx/assert"
-	"github.com/crdx/mission/args"
+	"github.com/crdx/mission/internal/args"
 	"golang.org/x/exp/slices"
 )
 

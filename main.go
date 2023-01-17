@@ -8,9 +8,9 @@ import (
 	"path"
 	"time"
 
-	"github.com/crdx/mission/config"
-	"github.com/crdx/mission/logger"
-	"github.com/crdx/mission/util"
+	"github.com/crdx/mission/internal/config"
+	"github.com/crdx/mission/internal/logger"
+	"github.com/crdx/mission/internal/util"
 
 	"github.com/crdx/col"
 	"github.com/crdx/duckopt"

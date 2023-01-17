@@ -3,11 +3,10 @@ package config
 import (
 	"fmt"
 
-	"github.com/crdx/mission/args"
-	"github.com/crdx/mission/logger"
-	"github.com/crdx/mission/tasks/spotify"
-
 	"github.com/crdx/col"
+	"github.com/crdx/mission/internal/args"
+	"github.com/crdx/mission/internal/logger"
+	"github.com/crdx/mission/internal/tasks/spotify"
 )
 
 type Action func(args *args.Args, logger *logger.Logger) error

@@ -7,8 +7,7 @@ import (
 	"os"
 	"path"
 
-	"github.com/crdx/mission/logger"
-
+	"github.com/crdx/mission/internal/logger"
 	"github.com/zmb3/spotify"
 )
 

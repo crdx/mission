@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"github.com/crdx/mission/args"
-	"github.com/crdx/mission/logger"
-	"github.com/crdx/mission/util"
+	"github.com/crdx/mission/internal/args"
+	"github.com/crdx/mission/internal/logger"
+	"github.com/crdx/mission/internal/util"
 
 	"github.com/zmb3/spotify"
 )

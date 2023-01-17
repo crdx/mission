@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/crdx/mission/jsonc"
+	"github.com/crdx/mission/internal/jsonc"
 )
 
 type Config struct {
