@@ -22,7 +22,7 @@ remake:
 
 # run tests
 @test *args:
-    go test ./... {{ args }}
+    go test -cover ./... {{ args }}
 
 # run linter
 @lint:
