@@ -18,7 +18,7 @@ remake:
 
 # remove build
 @clean:
-    rm -fv dist/*
+    rm -fv dist/{{ BIN }}
 
 # run tests
 @test *args:
