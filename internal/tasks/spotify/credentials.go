@@ -3,7 +3,7 @@ package spotify
 import (
 	"fmt"
 
-	"github.com/crdx/mission/internal/args"
+	"crdx.org/mission/internal/args"
 )
 
 type Credentials struct {

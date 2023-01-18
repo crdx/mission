@@ -3,7 +3,7 @@ package config
 import (
 	"path"
 
-	"github.com/crdx/mission/internal/util"
+	"crdx.org/mission/internal/util"
 )
 
 func transform(config *Config) error {

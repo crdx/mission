@@ -1,12 +1,12 @@
-module github.com/crdx/mission
+module crdx.org/mission
 
 go 1.19
 
 require (
-	github.com/crdx/assert v1.0.0
-	github.com/crdx/col v1.0.0
-	github.com/crdx/duckopt v1.0.0
-	github.com/crdx/hereduck v1.0.0
+	crdx.org/assert v1.0.2
+	crdx.org/col v1.0.2
+	crdx.org/duckopt v1.0.2
+	crdx.org/hereduck v1.0.2
 	github.com/zmb3/spotify v1.3.0
 	golang.org/x/exp v0.0.0-20230113213754-f9f960f08ad4
 	golang.org/x/oauth2 v0.4.0

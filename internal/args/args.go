@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/crdx/mission/internal/util"
+	"crdx.org/mission/internal/util"
 )
 
 type Args struct {

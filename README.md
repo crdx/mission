@@ -20,7 +20,7 @@
 ## Installation
 
 ```sh
-go install github.com/crdx/mission@latest
+go install crdx.org/mission@latest
 ```
 
 ## CLI

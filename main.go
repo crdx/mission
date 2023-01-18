@@ -8,12 +8,12 @@ import (
 	"path"
 	"time"
 
-	"github.com/crdx/mission/internal/config"
-	"github.com/crdx/mission/internal/logger"
-	"github.com/crdx/mission/internal/util"
+	"crdx.org/mission/internal/config"
+	"crdx.org/mission/internal/logger"
+	"crdx.org/mission/internal/util"
 
-	"github.com/crdx/col"
-	"github.com/crdx/duckopt"
+	"crdx.org/col"
+	"crdx.org/duckopt"
 )
 
 func getUsage() string {

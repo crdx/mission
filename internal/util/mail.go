@@ -5,7 +5,7 @@ import (
 	"os"
 	"os/exec"
 
-	"github.com/crdx/hereduck"
+	"crdx.org/hereduck"
 )
 
 func SendMail(name, email, subject, body string) error {
