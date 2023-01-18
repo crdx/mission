@@ -1,6 +1,7 @@
 cloud.google.com/go v0.34.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
-github.com/crdx/assert v1.0.0 h1:O+8e8T+WsCkoTcc1sivXviM9FdTV2LEsbtC4pcPRqaY=
 github.com/crdx/assert v1.0.0/go.mod h1:qKc8WkXakTUKVZfFhDgX+GZv5BO9W6lj8ad4kCrtpiI=
+github.com/crdx/assert v1.0.1 h1:F1VjknCcBF0adEhIiFlH56/jOVNPVErj6Ga4O4h+zMQ=
+github.com/crdx/assert v1.0.1/go.mod h1:qKc8WkXakTUKVZfFhDgX+GZv5BO9W6lj8ad4kCrtpiI=
 github.com/crdx/col v1.0.0 h1:iKViypWJqQvNridyPxx50nlAIhuzX0dDg1HgOdUZ4us=
 github.com/crdx/col v1.0.0/go.mod h1:q2Kvusjr2VE9XdMKNAbI26QFP2Hx7UH8TsCr8NQ4uB4=
 github.com/crdx/duckopt v1.0.0 h1:V5YJgcI+gN58oPYgnu1Ea+vMXcZqmof42PDUls4vxxc=
