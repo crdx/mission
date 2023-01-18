@@ -8,7 +8,7 @@ require (
 	crdx.org/duckopt v1.0.2
 	crdx.org/hereduck v1.0.2
 	github.com/zmb3/spotify v1.3.0
-	golang.org/x/exp v0.0.0-20230113213754-f9f960f08ad4
+	golang.org/x/exp v0.0.0-20230118134722-a68e582fa157
 	golang.org/x/oauth2 v0.4.0
 )
 
