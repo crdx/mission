@@ -1,12 +1,10 @@
 cloud.google.com/go v0.34.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
-crdx.org/assert v1.0.2 h1:8xfKFiGh5jAykD2ZHa34xtS5vA4WK3WZiikZHURS2OY=
-crdx.org/assert v1.0.2/go.mod h1:2l2arhfoQXp28IfNabHlaaKBt3FOl5toxHYZFzh//ZM=
 crdx.org/col v1.0.2 h1:++jouuBa5+E1MlcF3shoHCuW0cIYlJDYrx3ZBiS36fo=
 crdx.org/col v1.0.2/go.mod h1:ugpK+uDgbCO4mGaYTiLNugu8rUYf6bNVfufGStg3iAA=
-crdx.org/duckopt v1.0.2 h1:x+3Ow+GMyQNoXPsU+VrCpMS2Gl8//I9yXpLAJbuwdNM=
-crdx.org/duckopt v1.0.2/go.mod h1:QjVL/4h+RwOIXBh0Vr1HQVOA19fyng6WpoGIa+nWvmE=
-crdx.org/hereduck v1.0.2 h1:pauDrQW9yl/88FBbso8BcRMqUg2kIYiN5zDQnLVY8YE=
-crdx.org/hereduck v1.0.2/go.mod h1:2fivrgLUDy5jWuSEkFJGtYOKp9GYlmayDfyHYS1pPSI=
+crdx.org/duckopt v1.0.3 h1:9iD4/xwWIwSKXqS57xKTlk9gvLe0iQ8YmzBhwgWdTMo=
+crdx.org/duckopt v1.0.3/go.mod h1:3je32xqtS0s3h3N9dHX0wJ1xqtZxo0LBhJQpqCOqbAM=
+crdx.org/hereduck v1.0.3 h1:37t7wJpTFyZOl8nnYR/O2BdlLAcbl5G15tL1KQSCuxs=
+crdx.org/hereduck v1.0.3/go.mod h1:vIszV0JCDqAt3yEkNDxi4VWqNT9zc3ZfhNnzB5rfn90=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
