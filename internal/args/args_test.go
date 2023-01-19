@@ -3,7 +3,7 @@ package args_test
 import (
 	"testing"
 
-	"crdx.org/assert"
+	"github.com/stretchr/testify/assert"
 	"crdx.org/mission/internal/args"
 	"golang.org/x/exp/slices"
 )
