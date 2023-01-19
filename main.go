@@ -13,7 +13,7 @@ import (
 	"crdx.org/mission/internal/util"
 
 	"crdx.org/col"
-	"crdx.org/duckopt"
+	"crdx.org/duckopt/v2"
 )
 
 func getUsage() string {
@@ -112,11 +112,8 @@ func getConfigFilePath(path string) string {
 }
 
 func main() {
-	var opts Opts
 	log.SetFlags(0)
-	if err := duckopt.Parse(getUsage(), "$0").Bind(&opts); err != nil {
-		die("unable to parse arguments: %s", err)
-	}
+	opts := duckopt.MustBind[Opts](getUsage(), "$0")
 
 	col.InitUnless(opts.NoColor || opts.Headless)
 

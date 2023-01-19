@@ -1,8 +1,8 @@
 cloud.google.com/go v0.34.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 crdx.org/col v1.0.2 h1:++jouuBa5+E1MlcF3shoHCuW0cIYlJDYrx3ZBiS36fo=
 crdx.org/col v1.0.2/go.mod h1:ugpK+uDgbCO4mGaYTiLNugu8rUYf6bNVfufGStg3iAA=
-crdx.org/duckopt v1.0.3 h1:9iD4/xwWIwSKXqS57xKTlk9gvLe0iQ8YmzBhwgWdTMo=
-crdx.org/duckopt v1.0.3/go.mod h1:3je32xqtS0s3h3N9dHX0wJ1xqtZxo0LBhJQpqCOqbAM=
+crdx.org/duckopt/v2 v2.0.0 h1:7cQfoEumPEADbd+r23SEqaiiK8c7mea3DEMNrIPoUZE=
+crdx.org/duckopt/v2 v2.0.0/go.mod h1:vSD5bx/4+OweUIhBOMVZX0vfr6VOT8hWE3B4RR/4DP0=
 crdx.org/hereduck v1.0.3 h1:37t7wJpTFyZOl8nnYR/O2BdlLAcbl5G15tL1KQSCuxs=
 crdx.org/hereduck v1.0.3/go.mod h1:vIszV0JCDqAt3yEkNDxi4VWqNT9zc3ZfhNnzB5rfn90=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

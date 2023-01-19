@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	crdx.org/col v1.0.2
-	crdx.org/duckopt v1.0.3
+	crdx.org/duckopt/v2 v2.0.0
 	crdx.org/hereduck v1.0.3
 	github.com/stretchr/testify v1.8.1
 	github.com/zmb3/spotify v1.3.0
