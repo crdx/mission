@@ -3,8 +3,8 @@ package args_test
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
 	"crdx.org/mission/internal/args"
+	"github.com/stretchr/testify/assert"
 	"golang.org/x/exp/slices"
 )
 
@@ -25,5 +25,5 @@ func TestToEnvironmentVariables(t *testing.T) {
 		}
 	}
 
-	assert.Equal(t, len(env), 4)
+	assert.Equal(t, 4, len(env))
 }
