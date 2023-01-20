@@ -3,9 +3,9 @@ module crdx.org/mission
 go 1.19
 
 require (
-	crdx.org/col v1.0.2
-	crdx.org/duckopt/v2 v2.0.0
-	crdx.org/hereduck v1.0.3
+	crdx.org/col v1.0.3
+	crdx.org/duckopt/v2 v2.0.1
+	crdx.org/hereduck v1.0.4
 	github.com/stretchr/testify v1.8.1
 	github.com/zmb3/spotify v1.3.0
 	golang.org/x/exp v0.0.0-20230118134722-a68e582fa157
