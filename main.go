@@ -124,8 +124,6 @@ func main() {
 
 	col.InitUnless(opts.NoColor || opts.Headless)
 
-	startedAt := time.Now()
-
 	if opts.Init {
 		if util.PathExists(DefaultConfigFilePath) {
 			die("config file already exists: %s", DefaultConfigFilePath)
@@ -175,6 +173,7 @@ func main() {
 		die("unable to obtain exclusive lock")
 	}
 
+	startedAt := time.Now()
 	logger, err := createLogger(opts.Headless, config, startedAt)
 	if err != nil {
 		unlock()
