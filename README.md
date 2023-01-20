@@ -54,7 +54,7 @@ Options:
 
 ### init
 
-Create a sample configuration file in the current directory.
+Create a sample configuration file in the working directory.
 
 The contents of the file will be the as `mission.sample.json` found in this repository.
 
@@ -198,7 +198,7 @@ Note that the run log will be owned by the user that runs **mission**.
 
 ### Exec
 
-Exec tasks are executable scripts or binaries named `run` located within a directory named after the task slug in the `tasks` directory in the working directory. For example, a task named `mail` would be resolved to the executable found at `tasks/mail/run`.
+Exec tasks are executable scripts or binaries named `run` located within a directory named after the task slug in the `tasks` storage directory. For example, a task named `mail` would be resolved to the executable found at `$TASKS_DIR/mail/run`.
 
 ### Built in
 
