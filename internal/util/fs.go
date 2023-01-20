@@ -1,6 +1,7 @@
 package util
 
 import (
+	"errors"
 	"fmt"
 	"io/fs"
 	"os"
@@ -49,6 +50,11 @@ func IsReadableFile(str string) bool {
 	file, err := os.Open(str)
 	file.Close()
 	return err == nil
+}
+
+func PathExists(str string) bool {
+	_, err := os.Stat(str)
+	return !errors.Is(err, os.ErrNotExist)
 }
 
 func ChownDirectory(dir string, userId int, groupId int) (int, error) {

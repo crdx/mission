@@ -1,6 +1,7 @@
 package main
 
 import (
+	_ "embed"
 	"encoding/json"
 	"fmt"
 	"log"
@@ -19,16 +20,18 @@ import (
 func getUsage() string {
 	return `
         Usage:
+            $0 [options] init
             $0 [options] run [--task SLUG...] [--headless]
             $0 [options] list [--verbose]
             $0 [options] check
             $0 [options] dump
 
         Commands:
-            run     Run all tasks or specific tasks
-            list    List all available tasks
-            check   Validate configuration
-            dump    Dump parsed configuration as JSON
+            init     Create a sample configuration file
+            run      Run all tasks or specific tasks
+            list     List all available tasks
+            check    Validate configuration
+            dump     Dump parsed configuration as JSON
 
         Options:
             --headless           Run headlessly
@@ -42,6 +45,7 @@ func getUsage() string {
 }
 
 type Opts struct {
+	Init  bool `docopt:"init"`
 	Run   bool `docopt:"run"`
 	List  bool `docopt:"list"`
 	Check bool `docopt:"check"`
@@ -55,6 +59,9 @@ type Opts struct {
 	NoColor  bool     `docopt:"--no-color"`
 	Help     bool     `docopt:"--help"`
 }
+
+//go:embed mission.sample.json
+var SampleConfig []byte
 
 const (
 	DefaultConfigFilePath = "mission.config.json"
@@ -118,6 +125,20 @@ func main() {
 	col.InitUnless(opts.NoColor || opts.Headless)
 
 	startedAt := time.Now()
+
+	if opts.Init {
+		if util.PathExists(DefaultConfigFilePath) {
+			die("config file already exists: %s", DefaultConfigFilePath)
+		}
+
+		err := os.WriteFile(DefaultConfigFilePath, SampleConfig, 0666)
+		if err != nil {
+			die("unable to create config file: %s", err)
+		}
+
+		fmt.Printf(col.Green("Created default config file: %s\n"), DefaultConfigFilePath)
+		os.Exit(0)
+	}
 
 	config, err := config.Get(getConfigFilePath(opts.Config))
 	if err != nil {

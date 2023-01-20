@@ -27,16 +27,18 @@ go install crdx.org/mission@latest
 
 ```
 Usage:
+    mission [options] init
     mission [options] run [--task SLUG...] [--headless]
     mission [options] list [--verbose]
     mission [options] check
     mission [options] dump
 
 Commands:
-    run     Run all tasks or specific tasks
-    list    List all available tasks
-    check   Validate configuration
-    dump    Dump parsed configuration as JSON
+    init     Create a sample configuration file
+    run      Run all tasks or specific tasks
+    list     List all available tasks
+    check    Validate configuration
+    dump     Dump parsed configuration as JSON
 
 Options:
     --headless           Run headlessly
@@ -49,6 +51,12 @@ Options:
 ```
 
 ## Commands
+
+### init
+
+Create a sample configuration file in the current directory.
+
+The contents of the file will be the as `mission.sample.json` found in this repository.
 
 ### run
 
