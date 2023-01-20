@@ -127,7 +127,7 @@ func main() {
 	if opts.Dump {
 		j, err := json.MarshalIndent(config, "", "    ")
 		if err != nil {
-			fmt.Println(err)
+			log.Fatal(err)
 			os.Exit(1)
 		} else {
 			fmt.Println(string(j))
