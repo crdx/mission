@@ -147,7 +147,6 @@ func main() {
 		j, err := json.MarshalIndent(config, "", "    ")
 		if err != nil {
 			log.Fatal(err)
-			os.Exit(1)
 		} else {
 			fmt.Println(string(j))
 			os.Exit(0)
