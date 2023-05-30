@@ -6,7 +6,7 @@ require (
 	crdx.org/col v1.0.3
 	crdx.org/duckopt/v2 v2.0.1
 	crdx.org/hereduck v1.0.4
-	github.com/stretchr/testify v1.8.2
+	github.com/stretchr/testify v1.8.4
 	github.com/zmb3/spotify v1.3.0
 	golang.org/x/exp v0.0.0-20230118134722-a68e582fa157
 	golang.org/x/oauth2 v0.7.0
