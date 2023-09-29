@@ -1,6 +1,7 @@
 BIN := 'mission'
 
-@_help:
+[private]
+@help:
     just --list --unsorted
 
 # build binary
