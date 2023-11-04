@@ -43,7 +43,7 @@ func IsDirectory(str string) bool {
 
 func IsExecutable(str string) bool {
 	stat, err := os.Stat(str)
-	return err == nil && stat.Mode()&0111 != 0
+	return err == nil && stat.Mode()&0o111 != 0
 }
 
 func IsReadableFile(str string) bool {

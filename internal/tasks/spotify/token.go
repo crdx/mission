@@ -35,5 +35,5 @@ func saveToken(client *spotify.Client, sessionDir string) error {
 		return err
 	}
 
-	return os.WriteFile(getTokenFile(sessionDir), bytes, 0666)
+	return os.WriteFile(getTokenFile(sessionDir), bytes, 0o666)
 }

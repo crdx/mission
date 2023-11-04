@@ -68,14 +68,12 @@ func (self Config) GetRunnableTasks(slugs []string) []Task {
 
 func Get(path string) (config Config, err error) {
 	configJsonC, err := os.ReadFile(path)
-
 	if err != nil {
 		err = fmt.Errorf("unable to read config file: %w", err)
 		return
 	}
 
 	configJson, err := jsonc.Decode(configJsonC)
-
 	if err != nil {
 		err = fmt.Errorf("unable to decode jsonc: %w", err)
 		return

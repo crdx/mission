@@ -8,7 +8,6 @@ import (
 func HttpGet(endpoint string, params map[string]string) ([]byte, error) {
 	client := http.Client{}
 	request, err := http.NewRequest(http.MethodGet, endpoint, nil)
-
 	if err != nil {
 		return nil, err
 	}
@@ -20,7 +19,6 @@ func HttpGet(endpoint string, params map[string]string) ([]byte, error) {
 	request.URL.RawQuery = query.Encode()
 
 	response, err := client.Do(request)
-
 	if err != nil {
 		return nil, err
 	}

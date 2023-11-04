@@ -85,7 +85,6 @@ func createLogger(headless bool, config config.Config, startedAt time.Time) (*lo
 	if headless {
 		logFile := path.Join(config.Storage["logs"].Path, getLogFileName(startedAt))
 		file, err := os.Create(logFile)
-
 		if err != nil {
 			return logger, fmt.Errorf("unable to create logfile %s: %w", logFile, err)
 		}
@@ -129,7 +128,7 @@ func main() {
 			die("config file already exists: %s", DefaultConfigFilePath)
 		}
 
-		err := os.WriteFile(DefaultConfigFilePath, SampleConfig, 0666)
+		err := os.WriteFile(DefaultConfigFilePath, SampleConfig, 0o666)
 		if err != nil {
 			die("unable to create config file: %s", err)
 		}
