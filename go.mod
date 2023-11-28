@@ -9,7 +9,7 @@ require (
 	github.com/stretchr/testify v1.8.4
 	github.com/zmb3/spotify v1.3.0
 	golang.org/x/exp v0.0.0-20231006140011-7918f672742d
-	golang.org/x/oauth2 v0.13.0
+	golang.org/x/oauth2 v0.15.0
 )
 
 require (
