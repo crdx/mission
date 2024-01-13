@@ -1,11 +1,13 @@
+set quiet
+
 BIN := 'mission'
 
 [private]
-@help:
+help:
     just --list --unsorted
 
 # build binary
-@make:
+make:
     mkif dist/{{ BIN }} $(find -type f) -x 'just remake'
 
 # rebuild binary
@@ -18,13 +20,13 @@ remake:
     go build -trimpath -ldflags '-s -w' -o dist/{{ BIN }}
 
 # remove build
-@clean:
+clean:
     rm -fv dist/{{ BIN }}
 
 # run tests
-@test *args:
+test *args:
     go test -cover ./... {{ args }}
 
 # run linter
-@lint:
+lint:
     golangci-lint run
