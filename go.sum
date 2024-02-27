@@ -1,6 +1,6 @@
 cloud.google.com/go v0.34.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
-crdx.org/col v1.0.3 h1:tUC32KeTJN1YmFpNTCl3nKYaLx879kv7rpO1ysc5fCM=
-crdx.org/col v1.0.3/go.mod h1:ugpK+uDgbCO4mGaYTiLNugu8rUYf6bNVfufGStg3iAA=
+crdx.org/col v1.1.1 h1:fMzAfKPrdvvxpa2RD6G7PmfGZyA3JOm+qqWZbJDpadc=
+crdx.org/col v1.1.1/go.mod h1:bfSo/5WjHOVcNHsEsiGvwA8bwDo4FqfBlDlaUU4W7EE=
 crdx.org/duckopt/v2 v2.0.1 h1:1Fon0xO1Le6jTumpoQWXHuG0il/th0ESQpVXNNL/bCs=
 crdx.org/duckopt/v2 v2.0.1/go.mod h1:vSD5bx/4+OweUIhBOMVZX0vfr6VOT8hWE3B4RR/4DP0=
 crdx.org/hereduck v1.0.4 h1:wGC9Vfnbirwz6JfE3UqFmHo4nRimJJd8pLDkiYfxCF0=
