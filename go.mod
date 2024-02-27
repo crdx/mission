@@ -3,7 +3,7 @@ module crdx.org/mission
 go 1.19
 
 require (
-	crdx.org/col v1.0.3
+	crdx.org/col v1.1.1
 	crdx.org/duckopt/v2 v2.0.1
 	crdx.org/hereduck v1.0.4
 	github.com/stretchr/testify v1.8.4
