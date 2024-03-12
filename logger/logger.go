@@ -158,7 +158,7 @@ func (self *Logger) write(str string, timestamped bool) {
 	self.Lines = append(self.Lines, str)
 
 	for _, file := range self.files {
-		_, _ = file.Write([]byte(str))
+		_, _ = file.WriteString(str)
 		_ = file.Sync()
 	}
 }

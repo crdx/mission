@@ -1,9 +1,9 @@
 linters:
   enable-all: true
   disable:
-    - gocritic
-    - nestif
     - cyclop
+    - deadcode
+    - depguard
     - exhaustivestruct
     - exhaustruct
     - forbidigo
@@ -11,6 +11,8 @@ linters:
     - gci
     - gochecknoglobals
     - gocognit
+    - gocritic
+    - gocyclo
     - godox
     - goerr113
     - gofmt
@@ -19,25 +21,25 @@ linters:
     - gomnd
     - goprintffuncname
     - gosec
+    - ifshort
     - interfacer
     - lll
     - maligned
     - nakedret
+    - nestif
     - nlreturn
     - noctx
     - nonamedreturns
+    - nosnakecase
     - paralleltest
+    - perfsprint
     - prealloc
     - scopelint
+    - structcheck
+    - varcheck
     - varnamelen
     - wrapcheck
     - wsl
-    - deadcode
-    - structcheck
-    - nosnakecase
-    - varcheck
-    - ifshort
-    - gocyclo
 
 linters-settings:
   revive:

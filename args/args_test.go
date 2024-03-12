@@ -25,5 +25,5 @@ func TestToEnvironmentVariables(t *testing.T) {
 		}
 	}
 
-	assert.Equal(t, 4, len(env))
+	assert.Len(t, env, 4)
 }
