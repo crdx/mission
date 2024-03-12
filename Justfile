@@ -6,27 +6,18 @@ BIN := 'mission'
 help:
     just --list --unsorted
 
-# build binary
-make:
-    mkif dist/{{ BIN }} $(find -type f) -x 'just remake'
+build:
+    go build -trimpath -o dist/{{ BIN }}
 
-# rebuild binary
-remake:
-    #!/bin/bash
-    set -e
+fmt:
     go fmt ./...
-    go vet ./...
-    export CGO_ENABLED=0
-    go build -trimpath -ldflags '-s -w' -o dist/{{ BIN }}
 
-# remove build
-clean:
-    rm -fv dist/{{ BIN }}
-
-# run tests
-test *args:
-    go test -cover ./... {{ args }}
-
-# run linter
 lint:
+    go vet ./...
     golangci-lint run
+
+test:
+    go test -cover ./...
+
+clean:
+    rm -vf dist/{{ BIN }}
