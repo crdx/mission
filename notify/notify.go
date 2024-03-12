@@ -5,7 +5,7 @@ import (
 	"os/exec"
 	"time"
 
-	"crdx.org/mission/internal/util"
+	"crdx.org/mission/util"
 )
 
 type Icon = string

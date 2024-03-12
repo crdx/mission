@@ -9,9 +9,9 @@ import (
 	"path"
 	"time"
 
-	"crdx.org/mission/internal/config"
-	"crdx.org/mission/internal/logger"
-	"crdx.org/mission/internal/util"
+	"crdx.org/mission/config"
+	"crdx.org/mission/logger"
+	"crdx.org/mission/util"
 
 	"crdx.org/col"
 	"crdx.org/duckopt/v2"

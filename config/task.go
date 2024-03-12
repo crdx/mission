@@ -4,9 +4,9 @@ import (
 	"fmt"
 
 	"crdx.org/col"
-	"crdx.org/mission/internal/args"
-	"crdx.org/mission/internal/logger"
-	"crdx.org/mission/internal/tasks/spotify"
+	"crdx.org/mission/args"
+	"crdx.org/mission/logger"
+	"crdx.org/mission/tasks/spotify"
 )
 
 type Action func(args *args.Args, logger *logger.Logger) error

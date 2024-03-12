@@ -8,7 +8,7 @@ import (
 	"regexp"
 	"strings"
 
-	"crdx.org/mission/internal/util"
+	"crdx.org/mission/util"
 	"golang.org/x/exp/slices"
 )
 

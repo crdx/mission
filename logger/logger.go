@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"crdx.org/mission/internal/util"
+	"crdx.org/mission/util"
 )
 
 type Problem struct {
