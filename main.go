@@ -19,28 +19,28 @@ import (
 
 func getUsage() string {
 	return `
-        Usage:
-            $0 [options] init
-            $0 [options] run [--task SLUG...] [--headless]
-            $0 [options] list [--verbose]
-            $0 [options] check
-            $0 [options] dump
+		Usage:
+			$0 [options] init
+			$0 [options] run [--task SLUG...] [--headless]
+			$0 [options] list [--verbose]
+			$0 [options] check
+			$0 [options] dump
 
-        Commands:
-            init     Create a sample configuration file
-            run      Run all tasks or specific tasks
-            list     List all available tasks
-            check    Validate configuration
-            dump     Dump parsed configuration as JSON
+		Commands:
+			init     Create a sample configuration file
+			run      Run all tasks or specific tasks
+			list     List all available tasks
+			check    Validate configuration
+			dump     Dump parsed configuration as JSON
 
-        Options:
-            --headless           Run headlessly
-            -c, --config PATH    Configuration file
-            -t, --task SLUG      One or more tasks to run
-            -q, --quiet          Be quiet
-            -v, --verbose        Be verbose
-            -C, --no-color       Disable colours
-            -h, --help           Show help
+		Options:
+			--headless           Run headlessly
+			-c, --config PATH    Configuration file
+			-t, --task SLUG      One or more tasks to run
+			-q, --quiet          Be quiet
+			-v, --verbose        Be verbose
+			-C, --no-color       Disable colours
+			-h, --help           Show help
 	`
 }
 

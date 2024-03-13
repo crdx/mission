@@ -6,7 +6,7 @@ toolchain go1.22.1
 
 require (
 	crdx.org/col v1.1.1
-	crdx.org/duckopt/v2 v2.0.1
+	crdx.org/duckopt/v2 v2.1.0
 	crdx.org/hereduck v1.0.4
 	github.com/stretchr/testify v1.9.0
 	github.com/zmb3/spotify v1.3.0
