@@ -10,15 +10,13 @@ fmt:
     go fmt ./...
     just --fmt
 
-vet:
-    #!/bin/bash
-    set -eo pipefail
-    unbuffer go vet ./... | gostack
-
 lint:
     #!/bin/bash
     set -eo pipefail
+    unbuffer go vet ./... | gostack
     unbuffer golangci-lint --color never run | gostack
 
 test:
-    go test -cover ./...
+    #!/bin/bash
+    set -eo pipefail
+    unbuffer go test -cover ./... | gostack --test
