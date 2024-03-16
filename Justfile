@@ -6,18 +6,19 @@ BIN := 'mission'
 help:
     just --list --unsorted
 
-build:
-    go build -trimpath -o dist/{{ BIN }}
-
 fmt:
     go fmt ./...
+    just --fmt
+
+vet:
+    #!/bin/bash
+    set -eo pipefail
+    unbuffer go vet ./... | gostack
 
 lint:
-    go vet ./...
-    golangci-lint run
+    #!/bin/bash
+    set -eo pipefail
+    unbuffer golangci-lint --color never run | gostack
 
 test:
     go test -cover ./...
-
-clean:
-    rm -vf dist/{{ BIN }}
