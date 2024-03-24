@@ -40,7 +40,6 @@ func getUsage() string {
 			-q, --quiet          Be quiet
 			-v, --verbose        Be verbose
 			-C, --no-color       Disable colours
-			-h, --help           Show help
 	`
 }
 
@@ -57,7 +56,6 @@ type Opts struct {
 	Quiet    bool     `docopt:"--quiet"`
 	Tasks    []string `docopt:"--task"`
 	NoColor  bool     `docopt:"--no-color"`
-	Help     bool     `docopt:"--help"`
 }
 
 //go:embed mission.sample.json

@@ -47,7 +47,6 @@ Options:
     -q, --quiet          Be quiet
     -v, --verbose        Be verbose
     -C, --no-color       Disable colours
-    -h, --help           Show help
 ```
 
 ## Commands
