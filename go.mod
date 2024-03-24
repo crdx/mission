@@ -10,7 +10,7 @@ require (
 	crdx.org/hereduck v1.0.4
 	github.com/stretchr/testify v1.9.0
 	github.com/zmb3/spotify v1.3.0
-	golang.org/x/exp v0.0.0-20240222234643-814bf88cf225
+	golang.org/x/exp v0.0.0-20240318143956-a85f2c67cd81
 	golang.org/x/oauth2 v0.18.0
 )
 
