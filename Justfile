@@ -7,8 +7,9 @@ help:
     just --list --unsorted
 
 fmt:
-    go fmt ./...
     just --fmt
+    find . -name '*.just' -print0 | xargs -0 -I{} just --fmt -f {}
+    go fmt ./...
 
 lint:
     #!/bin/bash
