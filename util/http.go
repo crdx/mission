@@ -23,6 +23,6 @@ func HttpGet(endpoint string, params map[string]string) ([]byte, error) {
 		return nil, err
 	}
 
-	defer response.Body.Close()
+	defer response.Body.Close() //nolint:errcheck
 	return io.ReadAll(response.Body)
 }

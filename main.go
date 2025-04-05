@@ -104,7 +104,7 @@ func lock() bool {
 }
 
 func unlock() {
-	os.Remove(LockFilePath)
+	_ = os.Remove(LockFilePath)
 }
 
 func getConfigFilePath(path string) string {

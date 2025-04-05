@@ -93,7 +93,7 @@ func (self *Logger) PrintRawln(str ...string) {
 func (self *Logger) Close() {
 	for _, file := range self.files {
 		if file != os.Stdout {
-			file.Close()
+			_ = file.Close()
 		}
 	}
 }

@@ -48,7 +48,7 @@ func IsExecutable(str string) bool {
 
 func IsReadableFile(str string) bool {
 	file, err := os.Open(str)
-	file.Close()
+	_ = file.Close()
 	return err == nil
 }
 
