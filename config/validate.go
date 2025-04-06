@@ -6,10 +6,10 @@ import (
 	"os"
 	"os/exec"
 	"regexp"
+	"slices"
 	"strings"
 
 	"crdx.org/mission/util"
-	"golang.org/x/exp/slices"
 )
 
 func validate(config Config) error {

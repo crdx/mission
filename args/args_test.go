@@ -1,11 +1,11 @@
 package args_test
 
 import (
+	"slices"
 	"testing"
 
 	"crdx.org/mission/args"
 	"github.com/stretchr/testify/assert"
-	"golang.org/x/exp/slices"
 )
 
 func TestToEnvironmentVariables(t *testing.T) {

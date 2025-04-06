@@ -80,21 +80,18 @@ func Get(path string) (config Config, err error) {
 	}
 
 	err = json.Unmarshal(configJson, &config)
-
 	if err != nil {
 		err = fmt.Errorf("unable to parse %s: %w", path, err)
 		return
 	}
 
 	err = transform(&config)
-
 	if err != nil {
 		err = fmt.Errorf("unable to transform %s: %w", path, err)
 		return
 	}
 
 	err = validate(config)
-
 	if err != nil {
 		err = fmt.Errorf("validation failure for %s: %w", path, err)
 		return
