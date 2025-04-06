@@ -1,8 +1,6 @@
 module crdx.org/mission
 
-go 1.22.0
-
-toolchain go1.22.1
+go 1.24
 
 require (
 	crdx.org/col v1.1.1
@@ -10,7 +8,6 @@ require (
 	crdx.org/hereduck v1.0.4
 	github.com/stretchr/testify v1.10.0
 	github.com/zmb3/spotify v1.3.0
-	golang.org/x/exp v0.0.0-20240318143956-a85f2c67cd81
 	golang.org/x/oauth2 v0.18.0
 )
 
