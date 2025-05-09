@@ -42,23 +42,6 @@ func (self Playlist) SanitisedName() string {
 	}
 }
 
-func (self *Playlist) loadTracks(playlistTrackPage *spotify.PlaylistTrackPage) error {
-	self.PlaylistTracks = []spotify.PlaylistTrack{}
-
-	for {
-		self.PlaylistTracks = append(self.PlaylistTracks, playlistTrackPage.Tracks...)
-
-		err := self.client.NextPage(playlistTrackPage)
-		if errors.Is(err, spotify.ErrNoMorePages) {
-			return nil
-		}
-
-		if err != nil {
-			return err
-		}
-	}
-}
-
 func (self *Playlist) SaveTo(dir string) (int, error) {
 	playlistTrackPage, err := self.client.GetPlaylistTracks(self.Id)
 	if err != nil {
@@ -75,6 +58,23 @@ func (self *Playlist) SaveTo(dir string) (int, error) {
 	}
 
 	return len(bytes), os.WriteFile(path.Join(dir, self.FileName()), bytes, 0o666)
+}
+
+func (self *Playlist) loadTracks(playlistTrackPage *spotify.PlaylistTrackPage) error {
+	self.PlaylistTracks = []spotify.PlaylistTrack{}
+
+	for {
+		self.PlaylistTracks = append(self.PlaylistTracks, playlistTrackPage.Tracks...)
+
+		err := self.client.NextPage(playlistTrackPage)
+		if errors.Is(err, spotify.ErrNoMorePages) {
+			return nil
+		}
+
+		if err != nil {
+			return err
+		}
+	}
 }
 
 func getPlaylists(client *spotify.Client, playlistPage *spotify.SimplePlaylistPage) ([]Playlist, error) {
