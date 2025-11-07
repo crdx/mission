@@ -66,7 +66,7 @@ const (
 	LockFilePath          = "/tmp/mission.lock"
 )
 
-func die(format string, args ...any) {
+func die(format string, args ...any) { //nolint
 	log.Fatalf(col.Red("Error: "+format), args...)
 }
 
