@@ -3,10 +3,10 @@ module crdx.org/mission
 go 1.24
 
 require (
-	crdx.org/col v1.1.1
+	crdx.org/col v1.2.0
 	crdx.org/duckopt/v2 v2.3.0
 	crdx.org/hereduck v1.0.4
-	github.com/stretchr/testify v1.10.0
+	github.com/stretchr/testify v1.11.1
 	github.com/zmb3/spotify v1.3.0
 	golang.org/x/oauth2 v0.18.0
 )
