@@ -53,5 +53,5 @@ func notify(icon Icon, message string, userName string) error {
 		"critical",
 	}
 
-	return exec.Command(cmd[0], cmd[1:]...).Run()
+	return exec.Command(cmd[0], cmd[1:]...).Run() //nolint:gosec // G204: command is constructed internally
 }

@@ -57,7 +57,7 @@ func (self *Playlist) SaveTo(dir string) (int, error) {
 		return 0, err
 	}
 
-	return len(bytes), os.WriteFile(path.Join(dir, self.FileName()), bytes, 0o666)
+	return len(bytes), os.WriteFile(path.Join(dir, self.FileName()), bytes, 0o600)
 }
 
 func (self *Playlist) loadTracks(playlistTrackPage *spotify.PlaylistTrackPage) error {

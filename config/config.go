@@ -67,7 +67,7 @@ func (self Config) GetRunnableTasks(slugs []string) []Task {
 }
 
 func Get(path string) (config Config, err error) {
-	configJsonC, err := os.ReadFile(path)
+	configJsonC, err := os.ReadFile(path) //nolint:gosec // G304: path is from user's --config flag
 	if err != nil {
 		err = fmt.Errorf("unable to read config file: %w", err)
 		return

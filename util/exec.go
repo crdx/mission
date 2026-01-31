@@ -8,7 +8,7 @@ import (
 )
 
 func ExecCommand(cmd ...string) (string, error) {
-	bytes, err := exec.Command(cmd[0], cmd[1:]...).Output()
+	bytes, err := exec.Command(cmd[0], cmd[1:]...).Output() //nolint:gosec // G204: utility function for running commands
 	return strings.TrimSpace(string(bytes)), err
 }
 
@@ -27,7 +27,7 @@ func NewExecContext(workDir string, writer func(string), env []string) ExecConte
 }
 
 func (self ExecContext) NewCommand(cmd ...string) *exec.Cmd {
-	command := exec.Command(cmd[0], cmd[1:]...)
+	command := exec.Command(cmd[0], cmd[1:]...) //nolint:gosec // G204: utility function for running commands
 	command.Dir = self.workDir
 
 	if len(self.env) > 0 {

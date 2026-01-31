@@ -47,7 +47,7 @@ func IsExecutable(str string) bool {
 }
 
 func IsReadableFile(str string) bool {
-	file, err := os.Open(str)
+	file, err := os.Open(str) //nolint:gosec // G304: intentional file check
 	_ = file.Close()
 	return err == nil
 }
