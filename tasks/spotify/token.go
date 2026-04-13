@@ -30,7 +30,7 @@ func saveToken(client *spotify.Client, sessionDir string) error {
 		return err
 	}
 
-	bytes, err := json.MarshalIndent(token, "", "    ")
+	bytes, err := json.MarshalIndent(token, "", "    ") //nolint:gosec // saving token to local file
 	if err != nil {
 		return err
 	}

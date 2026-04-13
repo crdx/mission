@@ -31,7 +31,7 @@ func SendMail(name, email, subject, body string) error {
 		body,
 	)
 
-	command := exec.Command("sendmail", "-i", email)
+	command := exec.Command("sendmail", "-i", email) //nolint:gosec // trusted internal input
 
 	stdin, err := command.StdinPipe()
 	if err != nil {

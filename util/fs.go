@@ -69,7 +69,7 @@ func ChownDirectory(dir string, userId int, groupId int) (int, error) {
 			return nil
 		}
 
-		if err := os.Chown(path, userId, groupId); err != nil {
+		if err := os.Chown(path, userId, groupId); err != nil { //nolint:gosec // admin utility
 			return err
 		}
 
