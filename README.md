@@ -23,7 +23,7 @@
 go install crdx.org/mission@latest
 ```
 
-## CLI
+## Usage
 
 ```
 Usage:
